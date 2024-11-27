@@ -1,0 +1,17 @@
+# Basic hello world with variable manipulation and input
+skibidi "Hello, World!";
+
+# Variable declarations and arithmetic
+rizz x = 10;
+rizz y = 20;
+rizz z = x fanum_tax y;
+skibidi z;
+
+# Input and string handling
+rizz name = whats_up_unc "What's your name? ";
+skibidi name;
+
+# Conditional statement
+no_cap name sigma "Chad" {
+    skibidi "You're based!";
+}

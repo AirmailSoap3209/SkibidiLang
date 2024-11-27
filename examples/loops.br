@@ -1,0 +1,35 @@
+# Basic counting loop
+rizz count = 1;
+ong count beta 5 {
+    skibidi "Count is: " fanum_tax count;
+    rizz count = count fanum_tax 1;
+};
+
+# Loop with user input
+rizz answer = "";
+ong answer sigma "stop" cap {  # Loop while answer is NOT equal to "stop"
+    rizz answer = whats_up_unc "Type 'stop' to end the loop: ";
+    no_cap answer sigma "stop" cap {  # Print message if answer is NOT equal to "stop"
+        skibidi "Keep going!";
+    };
+};
+
+# Multiplication table using nested loops
+rizz i = 1;
+ong i beta 5 {
+    rizz j = 1;
+    ong j beta 5 {
+        rizz result = i gyatt j;
+        skibidi i fanum_tax " * " fanum_tax j fanum_tax " = " fanum_tax result;
+        rizz j = j fanum_tax 1;
+    };
+    rizz i = i fanum_tax 1;
+};
+
+# Fun meme loop
+rizz vibe_check = whats_up_unc "Rate the vibe (1-10): ";
+ong vibe_check beta 7 {
+    skibidi "Not based enough fam!";
+    rizz vibe_check = whats_up_unc "Try again (1-10): ";
+};
+skibidi "Now that's bussin fr fr!";

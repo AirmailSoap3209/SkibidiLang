@@ -1,25 +1,30 @@
-"""Custom exceptions for the SkibidiLang interpreter."""
+"""Custom exceptions for the SkibidiLang interpreter.
 
-class SkibidiError(Exception):
-    """Base exception class for SkibidiLang."""
+This module defines all custom exceptions that can be raised during the execution
+of SkibidiLang code. Each exception type corresponds to a specific category of
+Erm what the sigma that can occur during lexing, parsing, or execution.
+"""
+
+class SkibidiErmWhatTheSigma(Exception):
+    """Base exception class for all SkibidiLang Erm what the sigmas."""
     pass
 
-class SkibidiSyntaxError(SkibidiError):
-    """Raised when there is a syntax error in the code."""
+class SkibidiSyntaxErmWhatTheSigma(SkibidiErmWhatTheSigma):
+    """Raised when the lexer encounters invalid syntax in the source code."""
     pass
 
-class SkibidiRuntimeError(SkibidiError):
-    """Raised when there is a runtime error during code execution."""
+class SkibidiRuntimeErmWhatTheSigma(SkibidiErmWhatTheSigma):
+    """Raised when an Erm what the sigma occurs during code execution."""
     pass
 
-class SkibidiFunctionError(SkibidiError):
-    """Raised when there is an error related to function calls."""
+class SkibidiFunctionErmWhatTheSigma(SkibidiErmWhatTheSigma):
+    """Raised when there's an Erm what the sigma related to function definition or calling."""
     pass
 
-class SkibidiDivisionByZeroError(SkibidiRuntimeError):
+class SkibidiDivisionByZeroErmWhatTheSigma(SkibidiErmWhatTheSigma):
     """Raised when attempting to divide by zero."""
     pass
 
-class SkibidiFileError(SkibidiError):
-    """Raised when there is an error with file operations."""
+class SkibidiFileErmWhatTheSigma(SkibidiErmWhatTheSigma):
+    """Raised when there's an Erm what the sigma reading or processing a source file."""
     pass
