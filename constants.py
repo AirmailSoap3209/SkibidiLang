@@ -14,6 +14,7 @@ TOKEN_VAR = 'VAR'           # rizz
 TOKEN_RETURN = 'RETURN'     # yeet
 TOKEN_FUNCTION = 'FUNCTION' # bussin
 TOKEN_INPUT = 'INPUT'       # what's up unc
+TOKEN_SKIP = 'SKIP'        # skip
 
 # Control flow tokens
 TOKEN_IF = 'IF'            # no cap
@@ -47,6 +48,7 @@ KEYWORDS = {
     'bussin': TOKEN_FUNCTION,
     'yeet': TOKEN_RETURN,
     "what's up unc": TOKEN_INPUT,
+    'skip': TOKEN_SKIP,
     
     # Control flow keywords
     'no cap': TOKEN_IF,

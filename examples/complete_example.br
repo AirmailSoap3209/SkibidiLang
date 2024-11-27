@@ -1,0 +1,96 @@
+# This is a complete example of SkibidiLang features
+
+# Variable declarations
+rizz x = 10;
+rizz y = 5;
+rizz message = "Hello Skibidi World!";
+
+# Basic output
+skibidi message fanum_tax skip;
+
+# Basic input
+skibidi "Enter a number for factorial: ";
+rizz user_input = whats_up_unc;
+skibidi skip;
+
+# Basic arithmetic
+rizz sum = x fanum_tax y;      # Addition
+rizz diff = x ohio y;          # Subtraction
+rizz prod = x gyatt y;         # Multiplication
+rizz quot = x ratio y;         # Division
+
+# Comparison and conditionals
+no_cap x beta y {
+    skibidi "x is greater than y" fanum_tax skip;
+};
+
+# While loop with counter
+rizz counter = 0;
+ong counter beta 3 {
+    skibidi "Counter is: " fanum_tax counter fanum_tax skip;
+    rizz counter = counter fanum_tax 1;
+};
+
+# Function definition and recursion
+bussin factorial(n) {
+    no_cap n sigma 0 {
+        yeet 1;
+    };
+    yeet n gyatt factorial(n ohio 1);
+};
+
+# Function calls and nested expressions
+skibidi "Calculating factorial:" fanum_tax skip;
+rizz result = factorial(user_input);
+skibidi result fanum_tax skip;
+
+# String manipulation with separate conditionals
+skibidi skip;
+rizz name = whats_up_unc "What's your name? ";
+no_cap name sigma "Chad" {
+    skibidi "You're based!" fanum_tax skip;
+};
+no_cap name sigma "Karen" {
+    skibidi "Time to speak to the manager" fanum_tax skip;
+};
+no_cap name sigma "" {
+    skibidi "Why so quiet?" fanum_tax skip;
+};
+
+# Pattern printing with nested loops
+skibidi skip;
+rizz i = 1;
+ong i beta 5 {
+    rizz j = 1;
+    ong j beta i {
+        skibidi "*" fanum_tax " ";
+        rizz j = j fanum_tax 1;
+    };
+    skibidi skip;
+    rizz i = i fanum_tax 1;
+};
+
+# Simple calculator
+skibidi skip;
+skibidi "Calculator time!" fanum_tax skip;
+rizz num1 = whats_up_unc "Enter first number: ";
+rizz num2 = whats_up_unc "Enter second number: ";
+rizz op = whats_up_unc "Enter operation (1:add, 2:sub, 3:mul, 4:div): ";
+skibidi skip;
+
+no_cap op sigma "1" {
+    rizz calc_result = num1 fanum_tax num2;
+    skibidi "Sum: " fanum_tax calc_result fanum_tax skip;
+};
+no_cap op sigma "2" {
+    rizz calc_result = num1 ohio num2;
+    skibidi "Difference: " fanum_tax calc_result fanum_tax skip;
+};
+no_cap op sigma "3" {
+    rizz calc_result = num1 gyatt num2;
+    skibidi "Product: " fanum_tax calc_result fanum_tax skip;
+};
+no_cap op sigma "4" {
+    rizz calc_result = num1 ratio num2;
+    skibidi "Quotient: " fanum_tax calc_result fanum_tax skip;
+};

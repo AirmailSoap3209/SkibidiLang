@@ -40,6 +40,9 @@ class Interpreter(NodeVisitor):
         
         if node.op.type == TokenType.ADD:
             # Handle string concatenation
+            if isinstance(right, str) and right == "skip":
+                print(left, end="")
+                return right
             if isinstance(left, str) or isinstance(right, str):
                 return str(left) + str(right)
             return left + right
@@ -80,6 +83,8 @@ class Interpreter(NodeVisitor):
 
     def visit_VarNode(self, node):
         var_name = node.value
+        if var_name == "skip":
+            return "skip"
         val = self.global_scope.get(var_name)
         if val is None:
             raise NameError(f"Variable '{var_name}' is not defined")
@@ -87,7 +92,10 @@ class Interpreter(NodeVisitor):
 
     def visit_PrintNode(self, node):
         value = self.visit(node.expr)
-        print(value)
+        if isinstance(value, str) and value == "skip":
+            print()  # Just print a newline
+        else:
+            print(value, end="")
 
     def visit_InputNode(self, node):
         if node.prompt:
