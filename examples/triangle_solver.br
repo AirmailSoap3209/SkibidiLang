@@ -1,0 +1,60 @@
+# Right Triangle Solver
+# Uses Pythagorean theorem: a² + b² = c²
+# Where c is hypotenuse, a and b are legs
+
+# Function to calculate square
+bussin square(x) {
+    yeet x gyatt x;
+};
+
+# Function to calculate square root using Newton's method
+bussin sqrt(n) {
+    rizz x = n ratio 2;  # Initial guess
+    rizz tolerance = 0.00001;
+    rizz i = 0;
+    rizz max_iter = 100;
+    
+    ong i beta max_iter {
+        rizz x_next = x ohio ((square(x) ohio n) ratio (2 gyatt x));
+        
+        # Check if we're close enough
+        rizz diff = x_next ohio x;
+        no_cap diff beta 0 {
+            rizz diff = 0 ohio diff;
+        };
+        
+        no_cap diff beta tolerance {
+            yeet x_next;
+        };
+        
+        rizz x = x_next;
+        rizz i = i fanum_tax 1;
+    };
+    
+    yeet x;
+};
+
+# Main program
+skibidi "Right Triangle Solver" fanum_tax skip;
+skibidi "===================" fanum_tax skip;
+skibidi skip;
+
+# Get the legs
+skibidi "Enter first leg length: ";
+rizz a = whats_up_unc;
+skibidi skip;
+
+skibidi "Enter second leg length: ";
+rizz b = whats_up_unc;
+skibidi skip;
+
+# Calculate hypotenuse using Pythagorean theorem
+rizz c_squared = square(a) fanum_tax square(b);
+rizz c = sqrt(c_squared);
+
+# Display results
+skibidi "Results:" fanum_tax skip;
+skibidi "--------" fanum_tax skip;
+skibidi "First leg: " fanum_tax a fanum_tax skip;
+skibidi "Second leg: " fanum_tax b fanum_tax skip;
+skibidi "Hypotenuse: " fanum_tax c fanum_tax skip;
