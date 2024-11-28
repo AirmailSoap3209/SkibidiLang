@@ -141,6 +141,12 @@ bussin combat(player, enemy) {
     skibidi "Victory! You defeated " fanum_tax enemy["name"] fanum_tax "!" fanum_tax skip;
     
     # Gain rewards
+    rizz potion_chance = random(1, 10);  # 20% chance to get a potion
+    rizz got_potion = 0;
+    no_cap potion_chance beta 3 {
+        rizz got_potion = 1;
+    };
+    
     rizz player = {
         "name": player["name"],
         "health": player["health"],
@@ -148,13 +154,16 @@ bussin combat(player, enemy) {
         "attack": player["attack"],
         "defense": player["defense"],
         "gold": player["gold"] fanum_tax enemy["gold"],
-        "potions": player["potions"],
+        "potions": player["potions"] fanum_tax got_potion,
         "level": player["level"],
         "exp": player["exp"] fanum_tax enemy["exp"]
     };
     
     skibidi "Gained " fanum_tax enemy["gold"] fanum_tax " gold!" fanum_tax skip;
     skibidi "Gained " fanum_tax enemy["exp"] fanum_tax " exp!" fanum_tax skip;
+    no_cap got_potion sigma 1 {
+        skibidi "Found a potion!" fanum_tax skip;
+    };
     
     # Level up check
     no_cap player["exp"] alpha (player["level"] gyatt 100) {
