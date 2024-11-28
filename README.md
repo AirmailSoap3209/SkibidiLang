@@ -104,24 +104,63 @@ Check out `examples/projects/rpg_game.br` for a complete text-based RPG game sho
 - Dynamic enemy scaling
 
 ## Language Features
-- String concatenation using `fanum_tax`
-- Full arithmetic operations
-- Comparison operators
-- Input/output operations with newline control
-- Functions with parameters and dictionary returns
-- Conditional statements
-- Loops
-- Immutable dictionaries
-- Variables and scope
+### Core Features
+- Meme-inspired syntax that makes programming fun and memorable
+- Strong type system with numbers and strings
+- Rich set of arithmetic operations with memorable keywords
+- Clean and intuitive comparison operators
+- Powerful string manipulation with concatenation
+
+### Programming Constructs
+- Function definitions with parameter support and return values
+- Conditional statements (if/else) using `no_cap`
+- Loop structures with `ong` for iteration
+- Scope management with block-based structure
+
+### Data Management
+- Dictionary-based data structures for complex data
+- Immutable design promoting clean data flow
+- String-based dictionary keys for clarity
+- Built-in type conversion and handling
+
+### Input/Output
+- Console-based input with `whats_up_unc`
+- Formatted output with `skibidi`
+- Newline control using `skip`
+- Clean string formatting capabilities
+
+### Project Support
+- Modular code organization
+- Clear file extension (.br) for easy recognition
+- Support for large projects (see RPG game and math-wizard example)
+- Comprehensive error messages
 
 ## Important Notes
-- Each statement must end with a semicolon (;)
-- Code blocks are enclosed in curly braces { }
-- String literals are enclosed in double quotes
-- Comments start with #
-- Dictionary keys must be strings
-- Dictionaries are immutable - create new ones to update values
-- Use `skip` for newlines
+### Syntax Requirements
+- All statements must end with semicolon (;)
+- Code blocks require curly braces { }
+- Strings must use double quotes "text"
+- Comments begin with # symbol
+- Proper spacing around operators is required
+
+### Dictionary Rules
+- All dictionary keys must be strings
+- Dictionaries are immutable by design
+- Create new dictionaries to update values
+- Access values using square bracket notation ["key"]
+
+### Best Practices
+- Use descriptive variable names
+- Maintain consistent indentation
+- Comment complex logic
+- Break down complex operations into smaller functions
+- Handle errors appropriately
+
+### Common Pitfalls
+- Remember to use semicolons at end of statements
+- Don't try to modify dictionaries directly
+- Ensure proper string formatting in dictionary keys
+- Watch for proper operator spacing
 
 ## Requirements
 - Python 3.6+
