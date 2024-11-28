@@ -34,7 +34,10 @@ class TokenType(Enum):
     RPAREN = auto()
     LBRACE = auto()
     RBRACE = auto()
+    LBRACKET = auto()
+    RBRACKET = auto()
     COMMA = auto()
+    COLON = auto()
     ASSIGN = auto()
     EOL = auto()  # End of line
     EOF = auto()  # End of file

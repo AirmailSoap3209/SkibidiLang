@@ -38,8 +38,25 @@ class Interpreter(NodeVisitor):
             except ValueError:
                 pass
         
+        # Handle dictionary operations
+        if isinstance(left, dict):
+            if node.op.type == TokenType.ADD:
+                # Merge dictionaries
+                result = left.copy()
+                result.update(right)
+                return result
+            elif node.op.type == TokenType.SUB:
+                # Remove keys
+                result = left.copy()
+                if isinstance(right, (list, tuple)):
+                    for key in right:
+                        result.pop(key, None)
+                else:
+                    result.pop(right, None)
+                return result
+
+        # Handle string concatenation
         if node.op.type == TokenType.ADD:
-            # Handle string concatenation
             if isinstance(right, str) and right == "skip":
                 print(left, end="")
                 return right
@@ -60,6 +77,30 @@ class Interpreter(NodeVisitor):
             return left < right
         else:
             raise Exception(f'Unknown operator: {node.op.type}')
+
+    def visit_DictNode(self, node):
+        # Create a dictionary from the key-value pairs
+        result = {}
+        for key_node, value_node in node.items:
+            key = self.visit(key_node)
+            value = self.visit(value_node)
+            result[key] = value
+        return result
+
+    def visit_DictAccessNode(self, node):
+        # Get the dictionary and key values
+        dict_obj = self.visit(node.dict_node)
+        key = self.visit(node.key_node)
+        
+        # Check if the object is a dictionary
+        if not isinstance(dict_obj, dict):
+            raise Exception(f'Cannot access key {key} on non-dictionary object')
+            
+        # Check if the key exists
+        if key not in dict_obj:
+            raise Exception(f'Key not found: {key}')
+            
+        return dict_obj[key]
 
     def visit_UnaryOpNode(self, node):
         op_type = node.op.type

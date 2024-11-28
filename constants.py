@@ -36,6 +36,10 @@ TOKEN_IDENTIFIER = 'IDENTIFIER'
 TOKEN_NUMBER = 'NUMBER'
 TOKEN_STRING = 'STRING'
 TOKEN_OPERATOR = 'OPERATOR'
+TOKEN_COLON = 'COLON'      # For dictionary key-value pairs
+TOKEN_COMMA = 'COMMA'      # For separating dictionary items
+TOKEN_LBRACKET = 'LBRACKET'  # For dictionary access
+TOKEN_RBRACKET = 'RBRACKET'  # For dictionary access
 
 #------------------------------------------------------------------------------
 # Keyword Mappings

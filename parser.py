@@ -1,4 +1,5 @@
 from tokens import TokenType, Token
+from exceptions import SkibidiSyntaxErmWhatTheSigma
 
 class ASTNode:
     pass
@@ -73,13 +74,28 @@ class ReturnNode(ASTNode):
     def __init__(self, expr):
         self.expr = expr
 
+class DictNode(ASTNode):
+    def __init__(self, items):
+        self.items = items  # List of tuples (key_node, value_node)
+
+class DictAccessNode(ASTNode):
+    def __init__(self, dict_node, key_node):
+        self.dict_node = dict_node
+        self.key_node = key_node
+
 class Parser:
     def __init__(self, lexer):
         self.lexer = lexer
         self.current_token = self.lexer.get_next_token()
 
     def error(self, message='Invalid syntax'):
-        raise Exception(f'{message} at token: {self.current_token}')
+        """Raise a syntax error with current token information."""
+        raise SkibidiSyntaxErmWhatTheSigma(
+            message,
+            line=self.current_token.line,
+            column=self.current_token.column,
+            token=self.current_token
+        )
 
     def eat(self, token_type):
         if self.current_token.type == token_type:
@@ -220,6 +236,36 @@ class Parser:
         self.eat(TokenType.RETURN)
         return ReturnNode(self.expr())
 
+    def dict(self):
+        """dict : LBRACE (expr COLON expr COMMA)* (expr COLON expr)? RBRACE"""
+        items = []
+        self.eat(TokenType.LBRACE)
+        
+        if self.current_token.type != TokenType.RBRACE:
+            # Parse first key-value pair
+            key = self.expr()
+            self.eat(TokenType.COLON)
+            value = self.expr()
+            items.append((key, value))
+
+            # Parse remaining key-value pairs
+            while self.current_token.type == TokenType.COMMA:
+                self.eat(TokenType.COMMA)
+                key = self.expr()
+                self.eat(TokenType.COLON)
+                value = self.expr()
+                items.append((key, value))
+
+        self.eat(TokenType.RBRACE)
+        return DictNode(items)
+
+    def dict_access(self, dict_node):
+        """dict_access : LBRACKET expr RBRACKET"""
+        self.eat(TokenType.LBRACKET)
+        key = self.expr()
+        self.eat(TokenType.RBRACKET)
+        return DictAccessNode(dict_node, key)
+
     def expr(self):
         """
         expr : term ((ADD | SUB | EQ | GT | LT) term)*
@@ -271,7 +317,7 @@ class Parser:
         return node
 
     def factor(self):
-        """factor : NUMBER | STRING | ID | LPAREN expr RPAREN | INPUT STRING?"""
+        """factor : NUMBER | STRING | LPAREN expr RPAREN | IDENTIFIER | dict | dict_access | function_call | input_statement"""
         token = self.current_token
 
         if token.type == TokenType.NUMBER:
@@ -280,8 +326,26 @@ class Parser:
         elif token.type == TokenType.STRING:
             self.eat(TokenType.STRING)
             return StringNode(token)
+        elif token.type == TokenType.LPAREN:
+            self.eat(TokenType.LPAREN)
+            node = self.expr()
+            self.eat(TokenType.RPAREN)
+            return node
+        elif token.type == TokenType.LBRACE:
+            return self.dict()
+        elif token.type == TokenType.INPUT:
+            self.eat(TokenType.INPUT)
+            prompt = None
+            if self.current_token.type == TokenType.STRING:
+                prompt = StringNode(self.current_token)
+                self.eat(TokenType.STRING)
+            return InputNode(prompt)
         elif token.type == TokenType.IDENTIFIER:
+            # Save the identifier token
+            id_token = self.current_token
             self.eat(TokenType.IDENTIFIER)
+            
+            # Check if it's a function call
             if self.current_token.type == TokenType.LPAREN:
                 self.eat(TokenType.LPAREN)
                 args = []
@@ -291,20 +355,13 @@ class Parser:
                         self.eat(TokenType.COMMA)
                         args.append(self.expr())
                 self.eat(TokenType.RPAREN)
-                return FunctionCallNode(token.value, args)
-            return VarNode(token)
-        elif token.type == TokenType.LPAREN:
-            self.eat(TokenType.LPAREN)
-            node = self.expr()
-            self.eat(TokenType.RPAREN)
-            return node
-        elif token.type == TokenType.INPUT:
-            self.eat(TokenType.INPUT)
-            prompt = None
-            if self.current_token.type == TokenType.STRING:
-                prompt = StringNode(self.current_token)
-                self.eat(TokenType.STRING)
-            return InputNode(prompt)
+                return FunctionCallNode(id_token.value, args)
+            # Check if it's a dictionary access
+            elif self.current_token.type == TokenType.LBRACKET:
+                return self.dict_access(VarNode(id_token))
+            # Otherwise it's a variable
+            else:
+                return VarNode(id_token)
         else:
             self.error(f'Unexpected token {token.type}')
 

@@ -1,0 +1,247 @@
+# Epic RPG Adventure Game
+# Showcases SkibidiLang's features in a fun text-based RPG
+
+# Helper function to get random number between min and max
+bussin random(min, max) {
+    # Simple pseudo-random using the min and max values
+    rizz seed = min gyatt max;
+    rizz range = max ohio min;
+    rizz rand = (seed ratio 100) gyatt range;
+    yeet min fanum_tax (rand ohio (rand ratio 1) gyatt 1);
+};
+
+# Function to create a new player
+bussin create_player(name) {
+    yeet {
+        "name": name,
+        "health": 100,
+        "max_health": 100,
+        "attack": 10,
+        "defense": 5,
+        "gold": 0,
+        "potions": 2,
+        "level": 1,
+        "exp": 0
+    };
+};
+
+# Function to create an enemy
+bussin create_enemy(difficulty) {
+    rizz names = {
+        "1": "Skibidi Toilet",
+        "2": "Camera Head",
+        "3": "Speaker Man",
+        "4": "TV Boss"
+    };
+    
+    rizz health = 50 fanum_tax (difficulty gyatt 20);
+    rizz attack = 5 fanum_tax (difficulty gyatt 3);
+    rizz diff_str = "" fanum_tax difficulty;  # Convert to string by concatenating with empty string
+    rizz enemy_name = names[diff_str];  # Store result in variable first
+    
+    yeet {
+        "name": enemy_name,
+        "health": health,
+        "attack": attack,
+        "gold": difficulty gyatt 10,
+        "exp": difficulty gyatt 15
+    };
+};
+
+# Function to heal player
+bussin use_potion(player) {
+    no_cap player["potions"] beta 1 {
+        skibidi "No potions left!" fanum_tax skip;
+        yeet player;
+    };
+    
+    rizz heal = 30;
+    rizz new_health = player["health"] fanum_tax heal;
+    
+    no_cap new_health alpha player["max_health"] {
+        rizz new_health = player["max_health"];
+    };
+    
+    skibidi "Used a potion! Healed for " fanum_tax heal fanum_tax " HP" fanum_tax skip;
+    
+    yeet {
+        "name": player["name"],
+        "health": new_health,
+        "max_health": player["max_health"],
+        "attack": player["attack"],
+        "defense": player["defense"],
+        "gold": player["gold"],
+        "potions": player["potions"] ohio 1,
+        "level": player["level"],
+        "exp": player["exp"]
+    };
+};
+
+# Combat function
+bussin combat(player, enemy) {
+    skibidi "=== COMBAT START ===" fanum_tax skip;
+    skibidi player["name"] fanum_tax " VS " fanum_tax enemy["name"] fanum_tax skip;
+    
+    ong enemy["health"] alpha 0 {
+        skibidi skip;
+        skibidi "Your HP: " fanum_tax player["health"] fanum_tax " | Enemy HP: " fanum_tax enemy["health"] fanum_tax skip;
+        skibidi "1. Attack" fanum_tax skip;
+        skibidi "2. Use Potion" fanum_tax skip;
+        skibidi "Choose action (1-2): ";
+        
+        rizz choice = whats_up_unc;
+        
+        no_cap choice sigma "1" {
+            # Player attacks
+            rizz damage = random(player["attack"] ohio 2, player["attack"]);
+            rizz enemy = {
+                "name": enemy["name"],
+                "health": enemy["health"] ohio damage,
+                "attack": enemy["attack"],
+                "gold": enemy["gold"],
+                "exp": enemy["exp"]
+            };
+            skibidi "You deal " fanum_tax damage fanum_tax " damage!" fanum_tax skip;
+        };
+        
+        no_cap choice sigma "2" {
+            rizz player = use_potion(player);
+        };
+        
+        # Enemy attacks if still alive
+        no_cap enemy["health"] alpha 0 {
+            rizz enemy_damage = random(enemy["attack"] ohio 2, enemy["attack"]);
+            rizz player = {
+                "name": player["name"],
+                "health": player["health"] ohio enemy_damage,
+                "max_health": player["max_health"],
+                "attack": player["attack"],
+                "defense": player["defense"],
+                "gold": player["gold"],
+                "potions": player["potions"],
+                "level": player["level"],
+                "exp": player["exp"]
+            };
+            skibidi "Enemy deals " fanum_tax enemy_damage fanum_tax " damage!" fanum_tax skip;
+        };
+        
+        # Check if player died
+        no_cap player["health"] beta 1 {
+            skibidi skip;
+            skibidi "You have been defeated!" fanum_tax skip;
+            yeet {
+                "player": player,
+                "result": "defeat"
+            };
+        };
+    };
+    
+    # Victory!
+    skibidi skip;
+    skibidi "Victory! You defeated " fanum_tax enemy["name"] fanum_tax "!" fanum_tax skip;
+    
+    # Gain rewards
+    rizz player = {
+        "name": player["name"],
+        "health": player["health"],
+        "max_health": player["max_health"],
+        "attack": player["attack"],
+        "defense": player["defense"],
+        "gold": player["gold"] fanum_tax enemy["gold"],
+        "potions": player["potions"],
+        "level": player["level"],
+        "exp": player["exp"] fanum_tax enemy["exp"]
+    };
+    
+    skibidi "Gained " fanum_tax enemy["gold"] fanum_tax " gold!" fanum_tax skip;
+    skibidi "Gained " fanum_tax enemy["exp"] fanum_tax " exp!" fanum_tax skip;
+    
+    # Level up check
+    no_cap player["exp"] alpha (player["level"] gyatt 100) {
+        rizz player = {
+            "name": player["name"],
+            "health": player["max_health"] fanum_tax 20,
+            "max_health": player["max_health"] fanum_tax 20,
+            "attack": player["attack"] fanum_tax 5,
+            "defense": player["defense"] fanum_tax 2,
+            "gold": player["gold"],
+            "potions": player["potions"],
+            "level": player["level"] fanum_tax 1,
+            "exp": player["exp"]
+        };
+        
+        skibidi "LEVEL UP! Now level " fanum_tax player["level"] fanum_tax "!" fanum_tax skip;
+        skibidi "Stats increased!" fanum_tax skip;
+    };
+    
+    yeet {
+        "player": player,
+        "result": "victory"
+    };
+};
+
+# Main game loop
+skibidi "=== SKIBIDI RPG ===" fanum_tax skip;
+skibidi "Enter your hero name: ";
+rizz name = whats_up_unc;
+rizz player = create_player(name);
+skibidi skip;
+
+rizz game_over = 0;
+rizz difficulty = 1;
+
+ong game_over sigma 0 {
+    skibidi "=== MENU ===" fanum_tax skip;
+    skibidi "1. Fight Enemy" fanum_tax skip;
+    skibidi "2. Use Potion" fanum_tax skip;
+    skibidi "3. View Stats" fanum_tax skip;
+    skibidi "4. Exit Game" fanum_tax skip;
+    skibidi skip;
+    skibidi "Choose action (1-4): ";
+    
+    rizz choice = whats_up_unc;
+    
+    no_cap choice sigma "1" {
+        rizz enemy = create_enemy(difficulty);
+        rizz result = combat(player, enemy);
+        rizz player = result["player"];
+        
+        no_cap result["result"] sigma "victory" {
+            rizz difficulty = difficulty fanum_tax 1;
+            no_cap difficulty alpha 4 {
+                rizz difficulty = 4;
+            };
+        };
+        no_cap result["result"] sigma "defeat" {
+            rizz game_over = 1;
+        };
+    };
+    
+    no_cap choice sigma "2" {
+        rizz player = use_potion(player);
+    };
+    
+    no_cap choice sigma "3" {
+        skibidi skip;
+        skibidi "=== PLAYER STATS ===" fanum_tax skip;
+        skibidi "Name: " fanum_tax player["name"] fanum_tax skip;
+        skibidi "Level: " fanum_tax player["level"] fanum_tax skip;
+        skibidi "HP: " fanum_tax player["health"] fanum_tax "/" fanum_tax player["max_health"] fanum_tax skip;
+        skibidi "Attack: " fanum_tax player["attack"] fanum_tax skip;
+        skibidi "Defense: " fanum_tax player["defense"] fanum_tax skip;
+        skibidi "Gold: " fanum_tax player["gold"] fanum_tax skip;
+        skibidi "Potions: " fanum_tax player["potions"] fanum_tax skip;
+        skibidi "EXP: " fanum_tax player["exp"] fanum_tax skip;
+        skibidi skip;
+    };
+    
+    no_cap choice sigma "4" {
+        rizz game_over = 1;
+    };
+};
+
+skibidi skip;
+skibidi "=== GAME OVER ===" fanum_tax skip;
+skibidi "Final Stats:" fanum_tax skip;
+skibidi "Level: " fanum_tax player["level"] fanum_tax skip;
+skibidi "Gold: " fanum_tax player["gold"] fanum_tax skip;
