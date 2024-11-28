@@ -1,4 +1,4 @@
+*.br linguist-language=JavaScript
 *.br linguist-detectable=true
-*.br linguist-language=Custom
 *.br linguist-documentation=false
 *.py linguist-vendored=true
