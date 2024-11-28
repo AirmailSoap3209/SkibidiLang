@@ -1,3 +1,0 @@
-*.br linguist-language=JavaScript
-*.br linguist-detectable=true
-*.py linguist-vendored=true
