@@ -1,1 +1,3 @@
+*.br linguist-detectable=true
 *.br linguist-language=SkibidiLang
+*.br linguist-documentation=false
