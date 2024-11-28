@@ -1,4 +1,3 @@
 *.br linguist-language=Brainfuck
 *.br linguist-detectable=true
 *.py linguist-detectable=true
-* linguist-vendored=true
