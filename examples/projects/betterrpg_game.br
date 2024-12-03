@@ -1,0 +1,332 @@
+# Function to calculate base raised to the power of exponent
+bussin power(base, exponent) {
+    rizz result = 1;  # Initialize result to 1
+
+    # Handle negative exponents
+    no_cap exponent beta 0 {
+        yeet 0;  # Return 0 for negative exponents (or handle as needed)
+    };
+
+    # Multiply base by itself exponent times
+    ong exponent beta 0 {
+        rizz result = result gyatt base;  # Multiply result by base
+        rizz exponent = exponent ohio 1;  # Decrement exponent
+    };
+
+    yeet result;  # Return the final result
+};
+
+# Helper function to get random number between min and max
+bussin random(min, max) {
+    rizz a = 1664525;
+    rizz c = 1013904223;
+    rizz m = 4294967296;
+
+    rizz randint = min fanum_tax (seed ratio (max ohio min fanum_tax 1));
+    yeet randint
+};
+
+# Function to round a number to a specified precision
+bussin roundTo(number, precision) {
+    # Calculate the factor to multiply by
+    rizz factor = power(10, precision);  # 10 raised to the power of precision
+
+    # Scale the number, round it, and then scale back
+    rizz rounded_number = (number gyatt factor) ratio 1;  # Scale the number
+    rizz rounded_number = (rounded_number ratio 1) gyatt 0.5;  # Add 0.5 for rounding
+    rizz rounded_number = (rounded_number ratio 1) gyatt factor;  # Scale back
+
+    yeet rounded_number;  # Return the rounded number
+};
+
+
+# Function to create a new player
+bussin create_player(name) {
+    rizz attackrand = random(7,13);
+    yeet {
+        "name": name,
+        "health": 100,
+        "max_health": 100,
+        "attack": attackrand,
+        "defense": 5,
+        "gold": 0,
+        "potions": 2,
+        "level": 1,
+        "exp": 0
+    };
+};
+
+
+# Function to create an enemy
+bussin create_enemy(difficulty) {
+    rizz names = {
+        "1": "Skibidi Toilet",
+        "2": "Camera Head",
+        "3": "Speaker Man",
+        "4": "TV Boss"
+    };
+    
+    # Variables to create enemy stats
+    rizz health = 50 fanum_tax (difficulty gyatt 20);
+    rizz attack = 5 fanum_tax (difficulty gyatt 3);
+    rizz diff_str = "" fanum_tax difficulty;  # Convert to string by concatenating with empty string
+    rizz enemy_name = names[diff_str];  # Store result in variable first
+    
+    yeet {
+        "name": enemy_name,
+        "health": health,
+        "attack": attack,
+        "gold": difficulty gyatt 10,
+        "exp": difficulty gyatt 15
+    };
+};
+
+# Function to heal player
+bussin heal(player, healtype) {
+    no_cap healtype sigma "pot" {
+        rizz heal = 30;
+        skibidi "Used a potion! Healed for " fanum_tax 30 fanum_tax " HP" fanum_tax skip;
+    };
+    no_cap healtype sigma "meat" {
+        rizz heal = 15;
+        skibidi "Yum yum! Healed for " fanum_tax 15 fanum_tax " HP" fanum_tax skip;
+    };
+    rizz new_health = player["health"] fanum_tax heal;
+    no_cap new_health alpha player["max_health"] {
+        rizz new_health = player["max_health"];
+    };
+    no_cap healtype sigma "meat" {
+        yeet {
+            "name": player["name"],
+            "health": new_health,
+            "max_health": player["max_health"],
+            "attack": player["attack"],
+            "defense": player["defense"],
+            "gold": player["gold"] ohio 20,
+            "potions": player["potions"],
+            "level": player["level"],
+            "exp": player["exp"]
+        };
+    };
+    no_cap healtype sigma "pot" {
+        yeet {
+            "name": player["name"],
+            "health": new_health,
+            "max_health": player["max_health"],
+            "attack": player["attack"],
+            "defense": player["defense"],
+            "gold": player["gold"],
+            "potions": player["potions"] ohio 1,
+            "level": player["level"],
+            "exp": player["exp"]
+        };
+    };
+};
+
+# Combat function
+bussin combat(player, enemy) {
+    skibidi "=== COMBAT START ===" fanum_tax skip;
+    skibidi player["name"] fanum_tax " VS " fanum_tax enemy["name"] fanum_tax skip;
+    
+    ong enemy["health"] alpha 0 {
+        skibidi skip;
+        skibidi "Your HP: " fanum_tax player["health"] fanum_tax " | Enemy HP: " fanum_tax enemy["health"] fanum_tax skip;
+        skibidi "1. Attack" fanum_tax skip;
+        skibidi "2. Use Potion" fanum_tax skip;
+        skibidi "Choose action (1-2): ";
+        
+        rizz choice = whats_up_unc;
+        
+        no_cap choice sigma "1" {
+            # Player attacks
+            rizz damage = random(player["attack"] ohio 2, player["attack"]);
+            rizz enemy = {
+                "name": enemy["name"],
+                "health": enemy["health"] ohio damage,
+                "attack": enemy["attack"],
+                "gold": enemy["gold"],
+                "exp": enemy["exp"]
+            };
+            skibidi "You deal " fanum_tax damage fanum_tax " damage!" fanum_tax skip;
+        };
+        
+        no_cap choice sigma "2" {
+            rizz player = heal(player, "pot");
+        };
+        
+        # Enemy attacks if still alive
+        no_cap enemy["health"] alpha 0 {
+            rizz enemy_damage = random(enemy["attack"] ohio 2, enemy["attack"]);
+            rizz player = {
+                "name": player["name"],
+                "health": player["health"] ohio enemy_damage,
+                "max_health": player["max_health"],
+                "attack": player["attack"],
+                "defense": player["defense"],
+                "gold": player["gold"],
+                "potions": player["potions"],
+                "level": player["level"],
+                "exp": player["exp"]
+            };
+            skibidi "Enemy deals " fanum_tax enemy_damage fanum_tax " damage!" fanum_tax skip;
+        };
+        
+        # Check if player died
+        no_cap player["health"] beta 1 {
+            skibidi skip;
+            skibidi "You have been defeated!" fanum_tax skip;
+            yeet {
+                "player": player,
+                "result": "defeat"
+            };
+        };
+    };
+    
+    # Victory!
+    skibidi skip;
+    skibidi "Victory! You defeated " fanum_tax enemy["name"] fanum_tax "!" fanum_tax skip;
+    
+    # Gain rewards
+    rizz potion_chance = random(1, 10);  # 20% chance to get a potion bull shit its not 20%
+    rizz got_potion = 0;
+    no_cap potion_chance beta 3 {
+        rizz got_potion = 1;
+    };
+    
+    rizz player = {
+        "name": player["name"],
+        "health": player["health"],
+        "max_health": player["max_health"],
+        "attack": player["attack"],
+        "defense": player["defense"],
+        "gold": player["gold"] fanum_tax enemy["gold"],
+        "potions": player["potions"] fanum_tax got_potion,
+        "level": player["level"],
+        "exp": player["exp"] fanum_tax enemy["exp"]
+    };
+    
+    skibidi "Gained " fanum_tax enemy["gold"] fanum_tax " gold!" fanum_tax skip;
+    skibidi "Gained " fanum_tax enemy["exp"] fanum_tax " exp!" fanum_tax skip;
+    no_cap got_potion sigma 1 {
+        skibidi "Found a potion!" fanum_tax skip;
+    };
+    
+    # Level up check
+    no_cap player["exp"] alpha (player["level"] gyatt 100) {
+        rizz player = {
+            "name": player["name"],
+            "health": player["max_health"] fanum_tax 20,
+            "max_health": player["max_health"] fanum_tax 20,
+            "attack": player["attack"] fanum_tax 5,
+            "defense": player["defense"] fanum_tax 2,
+            "gold": player["gold"],
+            "potions": player["potions"],
+            "level": player["level"] fanum_tax 1,
+            "exp": player["exp"]
+        };
+        
+        skibidi "LEVEL UP! Now level " fanum_tax player["level"] fanum_tax "!" fanum_tax skip;
+        skibidi "Stats increased!" fanum_tax skip;
+    };
+    
+    yeet {
+        "player": player,
+        "result": "victory"
+    };
+};
+
+skibidi "=== SKIBIDI RPG ===" fanum_tax skip;
+skibidi "Enter your hero name: ";
+rizz name = whats_up_unc;
+skibidi "Enter seed: ";
+rizz seed = whats_up_unc;
+rizz player = create_player(name);
+skibidi skip;
+rizz game_over = 0;
+rizz difficulty = 1;
+
+
+ong game_over sigma "0" {
+    skibidi "=== MENU ===" fanum_tax skip;
+    skibidi "1. Fight Enemy" fanum_tax skip;
+    skibidi "2. Use Potion" fanum_tax skip;
+    skibidi "3. View Stats" fanum_tax skip;
+    skibidi "4. Shop" fanum_tax skip;
+    skibidi "5. Exit Game" fanum_tax skip;
+    skibidi skip;
+    skibidi "Choose action (1-5): ";
+    
+    rizz choice = whats_up_unc;
+    no_cap choice sigma "1" {
+        rizz enemy = create_enemy(difficulty);
+        rizz result = combat(player, enemy);
+        rizz player = result["player"];
+        
+        no_cap result["result"] sigma "victory" {
+            rizz difficulty = difficulty fanum_tax 1;
+            #diffculty cap
+            no_cap difficulty alpha 4 {
+                rizz difficulty = 4;
+            };
+        };
+        no_cap result["result"] sigma "defeat" {
+            rizz game_over = 1;
+        };
+    };
+    no_cap choice sigma "2" {
+        no_cap player["potions"] beta 1 {
+            skibidi "No potions left!" fanum_tax skip;
+            skibidi {
+                "name": player["name"],
+                "health": new_health,
+                "max_health": player["max_health"],
+                "attack": player["attack"],
+                "defense": player["defense"],
+                "gold": player["gold"],
+                "potions": player["potions"],
+                "level": player["level"],
+                "exp": player["exp"]
+            };
+        };
+        no_cap player["potions"] alpha 1 {
+            no_cap player["potions"] beta 1 {
+                skibidi "No potions left!" fanum_tax skip;
+                yeet player;
+            };
+            no_cap player["potions"] alpha 1 {
+                rizz player = heal(player, "pot");
+            } 
+        };
+    };
+    no_cap choice sigma "3" {
+        skibidi skip;
+        skibidi "=== PLAYER STATS ===" fanum_tax skip;
+        skibidi "Name: " fanum_tax player["name"] fanum_tax skip;
+        skibidi "Level: " fanum_tax player["level"] fanum_tax skip;
+        skibidi "HP: " fanum_tax player["health"] fanum_tax "/" fanum_tax player["max_health"] fanum_tax skip;
+        skibidi "Attack: " fanum_tax player["attack"] fanum_tax skip;
+        skibidi "Defense: " fanum_tax player["defense"] fanum_tax skip;
+        skibidi "Gold: " fanum_tax player["gold"] fanum_tax skip;
+        skibidi "Potions: " fanum_tax player["potions"] fanum_tax skip;
+        skibidi "EXP: " fanum_tax player["exp"] fanum_tax skip;
+        skibidi skip;
+    };
+
+    no_cap choice sigma "4" {
+        skibidi skip;
+        skibidi "Ey, migi vuru? (Hey, want meat?)" fanum_tax skip;
+        skibidi "1. Meat(15hp) for 20g" fanum_tax skip;
+        skibidi "2. Leave." fanum_tax skip;
+        skibidi skip;
+        rizz meat_choice = whats_up_unc;
+        no_cap meat_choice sigma "1" {
+            rizz player = heal(player, "meat");   
+        };
+        no_cap meat_choice sigma "2" {
+            skibidi skip;
+        };
+    };
+    no_cap choice sigma "5" {
+        rizz game_over = 1;
+    };
+};
