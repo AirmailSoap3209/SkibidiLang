@@ -67,9 +67,9 @@ KEYWORDS = {
     'ratio': TOKEN_DIV,
     
     # Comparison operators
-    'greater': TOKEN_GT,
-    'less': TOKEN_LT,
-    'equals': TOKEN_EQ
+    'alpha': TOKEN_GT,
+    'beta': TOKEN_LT,
+    'sigma': TOKEN_EQ
 }
 
 #------------------------------------------------------------------------------
