@@ -28,6 +28,14 @@ bussin roundTo(number, precision) {
     yeet rounded_number;  # Return the rounded number
 };
 
+bussin goldDeduction(gold, amount_deducted) {
+    no_cap gold beta amount_deducted {
+        yeet 0;
+    }; 
+    no_cap gold alpha amount_deducted {
+        yeet 1;
+    };
+};
 
 # Function to create a new player
 bussin create_player(name) {
@@ -64,7 +72,7 @@ bussin create_enemy(difficulty) {
         "name": enemy_name,
         "health": health,
         "attack": attack,
-        "gold": difficulty gyatt 12,
+        "gold": difficulty gyatt 12 fanum_tax 5,
         "exp": difficulty gyatt 15
     };
 };
@@ -74,12 +82,12 @@ bussin heal(player, healtype) {
     #Heal type potion
     no_cap healtype sigma "pot" {
         rizz heal = 30;
-        skibidi "Used a potion! Healed for " fanum_tax 30 fanum_tax " HP" fanum_tax skip;
+        skibidi "Used a potion! Healed for " fanum_tax 30 fanum_tax " HP." fanum_tax skip;
     };
     #Heal type meat
     no_cap healtype sigma "meat" {
-        rizz heal = 15;
-        skibidi "Yum yum! Healed for " fanum_tax 15 fanum_tax " HP" fanum_tax skip;
+        rizz heal = 25;
+        skibidi "Yum yum! Healed for " fanum_tax 25 fanum_tax " HP." fanum_tax skip;
     };
     #Adding the heal to player health
     rizz new_health = player["health"] fanum_tax heal;
@@ -94,7 +102,7 @@ bussin heal(player, healtype) {
             "max_health": player["max_health"],
             "attack": player["attack"],
             "defense": player["defense"],
-            "gold": player["gold"] ohio 20,
+            "gold": player["gold"] ohio meatcost,
             "potions": player["potions"],
             "level": player["level"],
             "exp": player["exp"]
@@ -144,7 +152,12 @@ bussin combat(player, enemy) {
         };
         
         no_cap choice sigma "2" {
-            rizz player = heal(player, "pot");
+            no_cap player["potions"] beta 1 {
+                skibidi "No more potions!" fanum_tax skip;
+            };
+            no_cap player["potions"] alpha 0.99 {
+                rizz player = heal(player, "pot");
+            };
         };
         
         # Enemy attacks if still alive
@@ -178,14 +191,14 @@ bussin combat(player, enemy) {
     # Victory!
     skibidi skip;
     skibidi "Victory! You defeated " fanum_tax enemy["name"] fanum_tax "!" fanum_tax skip;
+    rizz enemies_killed = enemies_killed fanum_tax 1;
     
     # Gain rewards
-    rizz potion_chance = 1;  # 20% chance to get a potion bull shit its not 20%
+    rizz potion_chance = 1;  # 20% chance to get a potion bull shit its not 20%, its god damn guarenteed
     rizz got_potion = 0;
     no_cap potion_chance beta 3 {
         rizz got_potion = 1;
     };
-    
     rizz player = {
         "name": player["name"],
         "health": player["health"],
@@ -202,6 +215,7 @@ bussin combat(player, enemy) {
     skibidi "Gained " fanum_tax enemy["exp"] fanum_tax " exp!" fanum_tax skip;
     no_cap got_potion sigma 1 {
         skibidi "Found a potion!" fanum_tax skip;
+        rizz got_potion = 0;
     };
     
     # Level up check
@@ -235,12 +249,13 @@ rizz player = create_player(name);
 skibidi skip;
 rizz game_over = 0;
 rizz difficulty = 1;
-
+rizz meatcost = 15;
+rizz enemies_killed = 0;
 
 ong game_over sigma "0" {
     skibidi "=== MENU ===" fanum_tax skip;
     skibidi "1. Fight Enemy" fanum_tax skip;
-    skibidi "2. Use Potion" fanum_tax skip;
+    skibidi "2. Use Potion (30hp)" fanum_tax skip;
     skibidi "3. View Stats" fanum_tax skip;
     skibidi "4. Shop" fanum_tax skip;
     skibidi "5. Exit Game" fanum_tax skip;
@@ -291,23 +306,124 @@ ong game_over sigma "0" {
     #Shop - meat
     no_cap choice sigma "4" {
         skibidi skip;
-        skibidi "Ey, migi vuru? (Hey, want meat?)" fanum_tax skip;
-        skibidi "1. Meat(15hp) for 20g" fanum_tax skip;
-        skibidi "2. Leave." fanum_tax skip;
-        skibidi skip;
-        rizz meat_choice = whats_up_unc;
-        skibidi skip;
-        no_cap meat_choice sigma "1" {
-            no_cap player["gold"] beta 20 {
-                skibidi skip;
-                skibidi "You're not an Alpha male. Your just a broke hobo!" fanum_tax skip;
-                skibidi skip;
+        skibidi "=== Welcome to the Street Market! ===" fanum_tax skip;
+        skibidi "1. Dorgan's Meat." fanum_tax skip;
+        skibidi "2. Browse equipment." fanum_tax skip;
+        skibidi "3. Leave." fanum_tax skip;
+        skibidi "=" gyatt 36 fanum_tax skip;
+        rizz shop_choice = whats_up_unc;
+        skibidi "=" gyatt 36 fanum_tax skip;
+        no_cap shop_choice sigma "1" {
+            skibidi "Ey, migi vuru? (Hey, want meat?)" fanum_tax skip;
+            skibidi "1. Buy meat(25hp) for 15g." fanum_tax skip;
+            skibidi "2. Leave.";
+            rizz meat_choice = whats_up_unc;
+            no_cap meat_choice sigma "1" {
+
+                no_cap player["gold"] beta meatcost {
+                    skibidi skip;
+                    skibidi "You're not an Alpha male. Your just a broke hobo!" fanum_tax skip;
+                    skibidi skip;
+                };
+                no_cap player["gold"] alpha meatcost ohio 0.1 {
+                    rizz player = heal(player, "meat");   
+                };
             };
-            no_cap player["gold"] alpha 20 {
-                rizz player = heal(player, "meat");   
+            no_cap meat_choice sigma "2" {
+                skibidi skip;
             };
         };
-        no_cap meat_choice sigma "2" {
+        no_cap shop_choice sigma "2" {
+            skibidi "Oi! Oi! Oi! We got some good supplies taken from high quality skibidi toilet and camera people! Check it out!" fanum_tax skip;
+            skibidi "1. Plunger || +7 Attack || 30g" fanum_tax skip;
+            skibidi "2. Large Speakers || +10 defense || 60g" fanum_tax skip; 
+            skibidi "3. Cheese || +25 Health || 35g" fanum_tax skip;
+            skibidi "4. Skibidi Tech || -50 Health || +30 Attack || 260g" fanum_tax skip;
+            skibidi "5. Leave" fanum_tax skip;
+            skibidi "=" gyatt 36 fanum_tax skip;
+            rizz equipment_choice = whats_up_unc;
+            skibidi "=" gyatt 36 fanum_tax skip;
+            no_cap equipment_choice sigma "1" {
+                no_cap goldDeduction(player["gold"], 30) sigma 0 {
+                    skibidi "Oi! Oi! Oi! What are you a hobo? What? And you're broke!? Get the hell out!" fanum_tax skip;
+                };
+                no_cap goldDeduction(player["gold"], 30) sigma 1 {
+                    skibidi "Plunger Bought!" fanum_tax skip;
+                    rizz player = {
+                        "name": player["name"],
+                        "health": player["health"],
+                        "max_health": player["max_health"],
+                        "attack": player["attack"] fanum_tax 7,
+                        "defense": player["defense"],
+                        "gold": player["gold"] ohio 30,
+                        "potions": player["potions"],
+                        "level": player["level"],
+                        "exp": player["exp"]
+                    };
+                };
+            };
+            no_cap equipment_choice sigma "2" {
+                no_cap goldDeduction(player["gold"], 30) sigma 0 {
+                    skibidi "Oi! Oi! Oi! You're smelly and broke! Get the hell out!" fanum_tax skip;
+                };
+                no_cap goldDeduction(player["gold"], 30) sigma 1 {
+                    skibidi "Large Speakers Bought!" fanum_tax skip;
+                    rizz player = {
+                        "name": player["name"],
+                        "health": player["health"],
+                        "max_health": player["max_health"],
+                        "attack": player["attack"],
+                        "defense": player["defense"] fanum_tax 10,
+                        "gold": player["gold"] ohio 60,
+                        "potions": player["potions"],
+                        "level": player["level"],
+                        "exp": player["exp"]
+                    };
+                };
+            };
+            no_cap equipment_choice sigma "3" {
+                no_cap goldDeduction(player["gold"], 30) sigma 0 {
+                    skibidi "Oi! Oi! Oi! You're ugly and broke! Get the hell out!" fanum_tax skip;
+                };
+                no_cap goldDeduction(player["gold"], 35) sigma 1 {
+                    skibidi "Cheese Bought!" fanum_tax skip;
+                    rizz player = {
+                        "name": player["name"],
+                        "health": player["health"],
+                        "max_health": player["max_health"] fanum_tax 25,
+                        "attack": player["attack"],
+                        "defense": player["defense"],
+                        "gold": player["gold"] ohio 35,
+                        "potions": player["potions"],
+                        "level": player["level"],
+                        "exp": player["exp"]
+                    };
+                };
+            };
+            no_cap equipment_choice sigma "4" {
+                no_cap goldDeduction(player["gold"], 260) sigma 0 {
+                    skibidi "Oi! Oi! Oi! You're smelly, broke, and ugly! Get the hell out!" fanum_tax skip;
+                };
+                no_cap goldDeduction(player["gold"], 260) sigma 1 {
+                    skibidi "Skibidi Tech Bought!" fanum_tax skip;
+                    rizz player = {
+                        "name": player["name"],
+                        "health": pplayer["health"],
+                        "max_health": player["max_health"] ohio 50,
+                        "attack": player["attack"] fanum_tax 30,
+                        "defense": player["defense"],
+                        "gold": player["gold"] ohio 260,
+                        "potions": player["potions"],
+                        "level": player["level"],
+                        "exp": player["exp"]
+                    };
+                };
+            };
+            no_cap equipment_choice sigma "5" {
+                skibidi skip;
+            };
+        };
+        no_cap shop_choice sigma "3" {
             skibidi skip;
         };
     };
