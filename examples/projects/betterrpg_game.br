@@ -43,10 +43,10 @@ bussin create_player(name) {
         "name": name,
         "health": 100,
         "max_health": 100,
-        "attack": 10,
+        "attack": 11.5,
         "defense": 5,
         "gold": 3,
-        "potions": 2,
+        "potions": 3,
         "level": 1,
         "exp": 0
     };
@@ -64,7 +64,8 @@ bussin create_enemy(difficulty) {
     
     # Variables to create enemy stats
     rizz health = 50 fanum_tax (difficulty gyatt 20);
-    rizz attack = 5 fanum_tax (difficulty gyatt 3);
+    rizz attack = 8 fanum_tax (difficulty gyatt 3);
+    rizz defense = 2 fanum_tax (difficulty gyatt 1.5);
     rizz diff_str = "" fanum_tax difficulty;  # Convert to string by concatenating with empty string
     rizz enemy_name = names[diff_str];  # Store result in variable first
     
@@ -72,8 +73,9 @@ bussin create_enemy(difficulty) {
         "name": enemy_name,
         "health": health,
         "attack": attack,
+        "defense": defense,
         "gold": difficulty gyatt 12 fanum_tax 5,
-        "exp": difficulty gyatt 15
+        "exp": difficulty gyatt 20
     };
 };
 
@@ -86,8 +88,8 @@ bussin heal(player, healtype) {
     };
     #Heal type meat
     no_cap healtype sigma "meat" {
-        rizz heal = 25;
-        skibidi "Yum yum! Healed for " fanum_tax 25 fanum_tax " HP." fanum_tax skip;
+        rizz heal = 15;
+        skibidi "Yum yum! Healed for " fanum_tax 15 fanum_tax " HP" fanum_tax skip;
     };
     #Adding the heal to player health
     rizz new_health = player["health"] fanum_tax heal;
@@ -140,11 +142,12 @@ bussin combat(player, enemy) {
         
         no_cap choice sigma "1" {
             # Player attacks
-            rizz damage = player["attack"] ohio 2;
+            rizz damage = player["attack"] ohio enemy["defense"];
             rizz enemy = {
                 "name": enemy["name"],
                 "health": enemy["health"] ohio damage,
                 "attack": enemy["attack"],
+                "defense": enemy["defense"],
                 "gold": enemy["gold"],
                 "exp": enemy["exp"]
             };
@@ -162,7 +165,7 @@ bussin combat(player, enemy) {
         
         # Enemy attacks if still alive
         no_cap enemy["health"] alpha 0 {
-            rizz enemy_damage = enemy["attack"] ohio 2;
+            rizz enemy_damage = enemy["attack"] ohio player["defense"];
             rizz player = {
                 "name": player["name"],
                 "health": player["health"] ohio enemy_damage,
@@ -174,7 +177,7 @@ bussin combat(player, enemy) {
                 "level": player["level"],
                 "exp": player["exp"]
             };
-            skibidi "Enemy deals " fanum_tax enemy_damage fanum_tax " damage!" fanum_tax skip;
+            skibidi enemy["name"] fanum_tax " deals " fanum_tax enemy_damage fanum_tax " damage!" fanum_tax skip;
         };
         
         # Check if player died
@@ -191,7 +194,6 @@ bussin combat(player, enemy) {
     # Victory!
     skibidi skip;
     skibidi "Victory! You defeated " fanum_tax enemy["name"] fanum_tax "!" fanum_tax skip;
-    rizz enemies_killed = enemies_killed fanum_tax 1;
     
     # Gain rewards
     rizz potion_chance = 1;  # 20% chance to get a potion bull shit its not 20%, its god damn guarenteed
@@ -250,7 +252,6 @@ skibidi skip;
 rizz game_over = 0;
 rizz difficulty = 1;
 rizz meatcost = 15;
-rizz enemies_killed = 0;
 
 ong game_over sigma "0" {
     skibidi "=== MENU ===" fanum_tax skip;
@@ -335,10 +336,10 @@ ong game_over sigma "0" {
         };
         no_cap shop_choice sigma "2" {
             skibidi "Oi! Oi! Oi! We got some good supplies taken from high quality skibidi toilet and camera people! Check it out!" fanum_tax skip;
-            skibidi "1. Plunger || +7 Attack || 30g" fanum_tax skip;
+            skibidi "1. Plunger || +10 Attack || 30g" fanum_tax skip;
             skibidi "2. Large Speakers || +10 defense || 60g" fanum_tax skip; 
-            skibidi "3. Cheese || +25 Health || 35g" fanum_tax skip;
-            skibidi "4. Skibidi Tech || -50 Health || +30 Attack || 260g" fanum_tax skip;
+            skibidi "3. Cheese || +5 Health || +25 Max Health || 25g" fanum_tax skip;
+            skibidi "4. Skibidi Tech || -50 Health || +40 Attack || 260g" fanum_tax skip;
             skibidi "5. Leave" fanum_tax skip;
             skibidi "=" gyatt 36 fanum_tax skip;
             rizz equipment_choice = whats_up_unc;
@@ -353,7 +354,7 @@ ong game_over sigma "0" {
                         "name": player["name"],
                         "health": player["health"],
                         "max_health": player["max_health"],
-                        "attack": player["attack"] fanum_tax 7,
+                        "attack": player["attack"] fanum_tax 10,
                         "defense": player["defense"],
                         "gold": player["gold"] ohio 30,
                         "potions": player["potions"],
@@ -382,18 +383,18 @@ ong game_over sigma "0" {
                 };
             };
             no_cap equipment_choice sigma "3" {
-                no_cap goldDeduction(player["gold"], 30) sigma 0 {
+                no_cap goldDeduction(player["gold"], 25) sigma 0 {
                     skibidi "Oi! Oi! Oi! You're ugly and broke! Get the hell out!" fanum_tax skip;
                 };
-                no_cap goldDeduction(player["gold"], 35) sigma 1 {
+                no_cap goldDeduction(player["gold"], 25) sigma 1 {
                     skibidi "Cheese Bought!" fanum_tax skip;
                     rizz player = {
                         "name": player["name"],
-                        "health": player["health"],
+                        "health": player["health"] fanum_tax 5,
                         "max_health": player["max_health"] fanum_tax 25,
                         "attack": player["attack"],
                         "defense": player["defense"],
-                        "gold": player["gold"] ohio 35,
+                        "gold": player["gold"] ohio 25,
                         "potions": player["potions"],
                         "level": player["level"],
                         "exp": player["exp"]
@@ -408,9 +409,9 @@ ong game_over sigma "0" {
                     skibidi "Skibidi Tech Bought!" fanum_tax skip;
                     rizz player = {
                         "name": player["name"],
-                        "health": pplayer["health"],
+                        "health": player["health"],
                         "max_health": player["max_health"] ohio 50,
-                        "attack": player["attack"] fanum_tax 30,
+                        "attack": player["attack"] fanum_tax 40,
                         "defense": player["defense"],
                         "gold": player["gold"] ohio 260,
                         "potions": player["potions"],
