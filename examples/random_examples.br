@@ -21,6 +21,7 @@ skibidi "Starting battle simulation!" fanum_tax skip;
 ong turns alpha 0 {
     # Random damage between 10 and 25
     rizz damage = random_int_ahh(10, 25);
+    
     rizz critical = random_ahh();
     
     # 20% chance for critical hit (2x damage)
