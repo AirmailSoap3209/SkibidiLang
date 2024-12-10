@@ -1,0 +1,46 @@
+# Example of random functions in SkibidiLang
+
+# Basic random float between 0 and 1
+rizz basic_random = random_ahh();
+skibidi "Random float (0-1): " fanum_tax basic_random fanum_tax skip;
+
+# Random integer between min and max (inclusive)
+rizz dice_roll = random_int_ahh(1, 6);
+skibidi "Dice roll (1-6): " fanum_tax dice_roll fanum_tax skip;
+
+# Random choice from a list of options
+rizz weapon = random_choice_ahh("sword", "axe", "bow", "staff");
+skibidi "Random weapon: " fanum_tax weapon fanum_tax skip;
+
+# Using random in a game loop
+rizz health = 100;
+rizz turns = 5;
+
+skibidi "Starting battle simulation!" fanum_tax skip;
+
+ong turns alpha 0 {
+    # Random damage between 10 and 25
+    rizz damage = random_int_ahh(10, 25);
+    rizz critical = random_ahh();
+    
+    # 20% chance for critical hit (2x damage)
+    no_cap critical beta 0.2 {
+        rizz damage = damage gyatt 2;
+        skibidi "CRITICAL HIT! ";
+    };
+    
+    rizz health = health ohio damage;
+    skibidi "Took " fanum_tax damage fanum_tax " damage! Health: " fanum_tax health fanum_tax skip;
+    rizz turns = turns ohio 1;
+    
+    # Random battle message
+    rizz message = random_choice_ahh(
+        "The enemy strikes back!",
+        "You barely dodge the attack!",
+        "The battle rages on!",
+        "Your armor absorbs some damage!"
+    );
+    skibidi message fanum_tax skip;
+};
+
+skibidi skip fanum_tax "Battle ended with " fanum_tax health fanum_tax " health remaining!";

@@ -1,10 +1,19 @@
 from tokens import TokenType
 
+import random
+
 class NodeVisitor:
     def visit(self, node):
-        method_name = 'visit_' + type(node).__name__
-        visitor = getattr(self, method_name, self.generic_visit)
-        return visitor(node)
+        try:
+            method_name = 'visit_' + type(node).__name__
+            visitor = getattr(self, method_name, self.generic_visit)
+            return visitor(node)
+        except SkibidiSyntaxError as e:
+            print(f'Syntax Error: {e.message} (Line: {e.line}, Column: {e.column}, Token: {e.token})')
+        except SkibidiRuntimeError as e:
+            print(f'Runtime Error: {e.message}')
+        except Exception as e:
+            print(f'Unexpected Error: {str(e)}')
 
     def generic_visit(self, node):
         raise Exception('No visit_{} method'.format(type(node).__name__))
@@ -195,6 +204,18 @@ class Interpreter(NodeVisitor):
 
     def visit_ReturnNode(self, node):
         raise ReturnValue(self.visit(node.expr))
+
+    def visit_RandomNode(self, node):
+        return random.random()
+
+    def visit_RandomIntNode(self, node):
+        min_val = int(self.visit(node.min_val))
+        max_val = int(self.visit(node.max_val))
+        return random.randint(min_val, max_val)
+
+    def visit_RandomChoiceNode(self, node):
+        choices = [self.visit(choice) for choice in node.choices]
+        return random.choice(choices)
 
     def interpret(self, tree):
         return self.visit(tree)
