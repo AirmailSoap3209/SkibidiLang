@@ -1,4 +1,5 @@
 from tokens import TokenType
+from exceptions import SkibidiSyntaxError, SkibidiRuntimeError, SkibidiTypeError
 
 import random
 
@@ -12,6 +13,8 @@ class NodeVisitor:
             print(f'Syntax Error: {e.message} (Line: {e.line}, Column: {e.column}, Token: {e.token})')
         except SkibidiRuntimeError as e:
             print(f'Runtime Error: {e.message}')
+        except SkibidiTypeError as e:
+            print(f'Type Error: {e.message}')
         except Exception as e:
             print(f'Unexpected Error: {str(e)}')
 
