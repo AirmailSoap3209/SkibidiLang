@@ -91,11 +91,13 @@ bussin heal(player, healtype) {
         rizz heal = 15;
         skibidi "Yum yum! Healed for " fanum_tax 15 fanum_tax " HP" fanum_tax skip;
     };
+    
     #Adding the heal to player health
     rizz new_health = player["health"] fanum_tax heal;
     no_cap new_health alpha player["max_health"] {
         rizz new_health = player["max_health"];
     };
+
     #removing gold when buy meat
     no_cap healtype sigma "meat" {
         yeet {
@@ -110,6 +112,7 @@ bussin heal(player, healtype) {
             "exp": player["exp"]
         };
     };
+
     #removing pot when drink pot
     no_cap healtype sigma "pot" {
         yeet {
