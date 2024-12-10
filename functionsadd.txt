@@ -1,0 +1,3 @@
+randomint
+sleep (wait function)
+roundto function
