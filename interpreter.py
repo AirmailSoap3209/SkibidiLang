@@ -1,5 +1,5 @@
 from tokens import TokenType
-
+from exceptions import SkibidiSyntaxError, SkibidiRuntimeError
 import random
 
 class NodeVisitor:
@@ -10,10 +10,10 @@ class NodeVisitor:
             return visitor(node)
         except SkibidiSyntaxError as e:
             print(f'Syntax Error: {e.message} (Line: {e.line}, Column: {e.column}, Token: {e.token})')
-        except SkibidiRuntimeError as e:
-            print(f'Runtime Error: {e.message}')
-        except Exception as e:
-            print(f'Unexpected Error: {str(e)}')
+#        except SkibidiRuntimeError as e:
+#            print(f'Runtime Error: {e.message}')
+#        except Exception as e:
+#            print(f'Unexpected Error: {str(e)}')
 
     def generic_visit(self, node):
         raise Exception('No visit_{} method'.format(type(node).__name__))
