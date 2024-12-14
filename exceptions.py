@@ -45,18 +45,3 @@ class SkibidiDivisionByZeroErmWhatTheSigma(SkibidiErmWhatTheSigma):
 class SkibidiFileErmWhatTheSigma(SkibidiErmWhatTheSigma):
     """Raised when there's an Erm what the sigma reading or processing a source file."""
     pass
-
-class SkibidiSyntaxError(Exception):
-    def __init__(self, message, line, column, token):
-        super().__init__(message)
-        self.line = line
-        self.column = column
-        self.token = token
-
-class SkibidiRuntimeError(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class SkibidiTypeError(Exception):
-    def __init__(self, message):
-        super().__init__(message)

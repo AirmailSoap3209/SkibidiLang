@@ -30,9 +30,6 @@ class TokenType(Enum):
     NUMBER = auto()
     STRING = auto()
     IDENTIFIER = auto()
-    RANDOM = auto()
-    RANDOM_INT = auto()
-    RANDOM_CHOICE = auto()
     LPAREN = auto()
     RPAREN = auto()
     LBRACE = auto()
@@ -64,9 +61,6 @@ KEYWORDS = {
     'bussin': TokenType.FUNCTION,
     'yeet': TokenType.RETURN,
     "whats_up_unc": TokenType.INPUT,
-    'random_ahh': TokenType.RANDOM,
-    'random_int_ahh': TokenType.RANDOM_INT,
-    'random_choice_ahh': TokenType.RANDOM_CHOICE,
     
     # Control flow keywords
     'no_cap': TokenType.IF,
