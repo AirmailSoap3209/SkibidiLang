@@ -198,5 +198,5 @@ SkibidiLang programs use the `.br` file extension.
 
 ## Let’s Get Skibidi!
 
-SkibidiLang is the perfect blend of fun and functionality. Share your creations, explore exciting projects, and contribute to the SkibidiLang community—let’s make programming skibidi and bussin together! 🎉
+SkibidiLang is the perfect blend of fun and functionality. Share your creations, explore exciting projects, and contribute to the SkibidiLang community—let’s make programming skibidi and bussin together! 
 
