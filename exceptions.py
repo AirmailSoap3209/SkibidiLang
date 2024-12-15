@@ -2,11 +2,11 @@
 
 This module defines all custom exceptions that can be raised during the execution
 of SkibidiLang code. Each exception type corresponds to a specific category of
-Erm what the sigma that can occur during lexing, parsing, or execution.
+error that can occur during lexing, parsing, or execution.
 """
 
 class SkibidiErmWhatTheSigma(Exception):
-    """Base exception class for all SkibidiLang Erm what the sigmas."""
+    """Base exception class for all SkibidiLang errors."""
     def __init__(self, message, line=None, column=None, token=None):
         self.message = message
         self.line = line
@@ -31,11 +31,11 @@ class SkibidiSyntaxErmWhatTheSigma(SkibidiErmWhatTheSigma):
     pass
 
 class SkibidiRuntimeErmWhatTheSigma(SkibidiErmWhatTheSigma):
-    """Raised when an Erm what the sigma occurs during code execution."""
+    """Raised when an error occurs during code execution."""
     pass
 
 class SkibidiFunctionErmWhatTheSigma(SkibidiErmWhatTheSigma):
-    """Raised when there's an Erm what the sigma related to function definition or calling."""
+    """Raised when there's an error related to function definition or calling."""
     pass
 
 class SkibidiDivisionByZeroErmWhatTheSigma(SkibidiErmWhatTheSigma):
@@ -43,5 +43,5 @@ class SkibidiDivisionByZeroErmWhatTheSigma(SkibidiErmWhatTheSigma):
     pass
 
 class SkibidiFileErmWhatTheSigma(SkibidiErmWhatTheSigma):
-    """Raised when there's an Erm what the sigma reading or processing a source file."""
+    """Raised when there's an error reading or processing a source file."""
     pass

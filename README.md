@@ -1,41 +1,52 @@
 # SkibidiLang (formerly BrainRot)
 
-SkibidiLang is a modern programming language that uses internet slang and memes as its syntax. It's designed to be fun while maintaining the functionality of a traditional programming language.
+**SkibidiLang** is a modern, meme-inspired programming language that brings internet slang and humor into coding. It’s designed to make programming enjoyable while retaining the functionality of traditional programming languages. Whether you’re creating fun projects or learning to code, SkibidiLang offers a unique experience.
 
-## Keywords
+---
 
-```
-# Printing and I/O
-skibidi         -> print
-whats_up_unc    -> input
-skip            -> newline
+## Features at a Glance
 
-# Variables and Functions
-rizz            -> variable declaration
-bussin          -> function definition
-yeet            -> return
+- **Robust Programming Constructs**: Includes loops, conditionals, and functions.
+- **Powerful Data Management**: Work with immutable dictionaries and type-safe structures.
+- **Console I/O**: Easily handle input and output with keywords like `whats_up_unc`.
+- **Project-Ready**: Build modular, scalable applications with `.br` files.
 
-# Control Flow
-no_cap          -> if
-ong             -> while
-fr_fr           -> true
-cap             -> false
+---
 
-# Arithmetic
-fanum_tax       -> addition (+)
-ohio            -> subtraction (-)
-gyatt           -> multiplication (*)
-ratio           -> division (/)
+## SkibidiLang Syntax
 
-# Comparisons
-alpha           -> greater than (>)
-beta            -> less than (<)
-sigma           -> equals (==)
-```
+### Keywords Overview
+
+| **Category**            | **SkibidiLang Keyword** | **Traditional Equivalent** |
+| ----------------------- | ----------------------- | -------------------------- |
+| **Printing/I/O**        | `skibidi`               | `print`                    |
+|                         | `whats_up_unc`          | `input`                    |
+|                         | `skip`                  | `newline`                  |
+| **Variables/Functions** | `rizz`                  | `variable declaration`     |
+|                         | `bussin`                | `function definition`      |
+|                         | `yeet`                  | `return`                   |
+| **Control Flow**        | `no_cap`                | `if`                       |
+|                         | `ong`                   | `while`                    |
+|                         | `fr_fr`                 | `true`                     |
+|                         | `cap`                   | `false`                    |
+| **Arithmetic**          | `fanum_tax`             | `+`                        |
+|                         | `ohio`                  | `-`                        |
+|                         | `gyatt`                 | `*`                        |
+|                         | `ratio`                 | `/`                        |
+| **Comparisons**         | `alpha`                 | `>`                        |
+|                         | `beta`                  | `<`                        |
+|                         | `sigma`                 | `==`                       |
+
+---
 
 ## Data Structures
 
 ### Dictionaries
+
+SkibidiLang supports immutable dictionaries, encouraging clean data flow and functional programming principles. This approach reduces the risk of unintended side effects and promotes safer, more predictable code behavior.
+
+#### Example: Dictionary Usage
+
 ```
 # Creating a dictionary
 rizz stats = {
@@ -44,11 +55,10 @@ rizz stats = {
     "defense": 5
 };
 
-# Accessing dictionary values
+# Accessing values
 rizz health = stats["health"];
 
-# Note: Dictionaries are immutable!
-# Create a new dictionary to update values:
+# Updating values (create a new dictionary)
 rizz new_stats = {
     "health": stats["health"] ohio 10,
     "attack": stats["attack"],
@@ -56,14 +66,18 @@ rizz new_stats = {
 };
 ```
 
+---
+
 ## Example Programs
 
-### Hello World
+### Hello, World
+
 ```
 skibidi "Hello, World!" fanum_tax skip;
 ```
 
-### Variable Declaration and Arithmetic
+### Arithmetic and Variables
+
 ```
 rizz x = 10;
 rizz y = 20;
@@ -71,7 +85,8 @@ rizz z = x fanum_tax y;  # z = 30
 skibidi z fanum_tax skip;
 ```
 
-### Functions with Dictionary Return
+### Functions and Return Values
+
 ```
 bussin add(x, y) {
     yeet x fanum_tax y;
@@ -81,96 +96,102 @@ rizz result = add(5, 3);
 skibidi result;  # Prints 8
 ```
 
-### Control Flow with Boolean Values
+### Control Flow with Boolean Logic
+
 ```
 rizz game_over = 0;  # cap (false)
 
 ong game_over sigma 0 {
     skibidi "Game is running" fanum_tax skip;
     rizz choice = whats_up_unc;
-    
+
     no_cap choice sigma "quit" {
         rizz game_over = 1;  # fr_fr (true)
     };
 }
 ```
 
-## Featured Project: RPG Game
-Check out `examples/projects/rpg_game.br` for a complete text-based RPG game showcasing:
+---
+
+## Featured Projects
+
+### RPG Game
+
+Dive into `examples/projects/rpg_game.br` to explore:
+
 - Dictionary-based character stats
-- Turn-based combat system
+- Turn-based combat
 - Inventory management
-- Experience and leveling system
 - Dynamic enemy scaling
 
-## Language Features
+---
+
+## SkibidiLang Language Features
+
 ### Core Features
-- Meme-inspired syntax that makes programming fun and memorable
-- Strong type system with numbers and strings
-- Rich set of arithmetic operations with memorable keywords
-- Clean and intuitive comparison operators
-- Powerful string manipulation with concatenation
+
+- **Arithmetic & Comparisons**: Handle math and logic with keywords like `fanum_tax` for addition or `alpha` for greater-than comparisons.
+- **Immutability**: Encourages clean coding practices by restricting in-place updates to dictionaries.
 
 ### Programming Constructs
-- Function definitions with parameter support and return values
-- Conditional statements (if/else) using `no_cap`
-- Loop structures with `ong` for iteration
-- Scope management with block-based structure
+
+- **Conditional Statements**: Use `no_cap` (if/else) for decision-making.
+- **Loops**: Utilize `ong` (while) for iteration.
+- **Functions**: Define reusable code blocks with `bussin` and return values with `yeet`.
 
 ### Data Management
-- Dictionary-based data structures for complex data
-- Immutable design promoting clean data flow
-- String-based dictionary keys for clarity
-- Built-in type conversion and handling
+
+- **Dictionaries**: Work with immutable, string-keyed dictionaries for structured data.
+- **Dynamic Variables**: Use `rizz` to declare and manage data.
 
 ### Input/Output
-- Console-based input with `whats_up_unc`
-- Formatted output with `skibidi`
-- Newline control using `skip`
-- Clean string formatting capabilities
 
-### Project Support
-- Modular code organization
-- Clear file extension (.br) for easy recognition
-- Support for large projects (see RPG game and math-wizard example)
-- Comprehensive error messages
+- **Console Input**: Capture user input with `whats_up_unc`.
+- **Formatted Output**: Print data using `skibidi` and control newlines with `skip`.
 
-## Important Notes
-### Syntax Requirements
-- All statements must end with semicolon (;)
-- Code blocks require curly braces { }
-- Strings must use double quotes "text"
-- Comments begin with # symbol
-- Proper spacing around operators is required
+### Syntax Rules
 
-### Dictionary Rules
-- All dictionary keys must be strings
-- Dictionaries are immutable by design
-- Create new dictionaries to update values
-- Access values using square bracket notation ["key"]
+- Statements end with `;`.
+- Code blocks are enclosed in `{}`.
+- Strings use double quotes (").
+- Comments start with `#`.
 
-### Best Practices
-- Use descriptive variable names
-- Maintain consistent indentation
-- Comment complex logic
-- Break down complex operations into smaller functions
-- Handle errors appropriately
+---
 
-### Common Pitfalls
-- Remember to use semicolons at end of statements
-- Don't try to modify dictionaries directly
-- Ensure proper string formatting in dictionary keys
-- Watch for proper operator spacing
+## Getting Started
 
-## Requirements
-- Python 3.6+
+### Installation
 
-## Installation
-1. Clone this repository
-2. Run your SkibidiLang programs using the Python interpreter:
-```bash
-python main.py your_program.br
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AirmailSoap3209/SkibidiLang.git
+   cd SkibidiLang
+   ```
+2. Run SkibidiLang programs using Python:
+   ```bash
+   python main.py your_program.br
+   ```
 
-## File Extension
+### Requirements
+
+- Python 3.6 or newer
+
+### File Extension
+
 SkibidiLang programs use the `.br` file extension.
+
+---
+
+## Best Practices
+
+- **Use Descriptive Names**: Make variables and functions meaningful.
+- **Comment Complex Logic**: Ensure readability for future users.
+- **Maintain Consistent Formatting**: Indentation and spacing improve clarity.
+- **Break Down Functions**: Keep them small and focused.
+
+---
+
+## Let’s Get Skibidi!
+
+SkibidiLang is the perfect blend of fun and functionality. Share your creations, explore exciting projects, and contribute to the SkibidiLang community—let’s make programming skibidi and bussin together! 🎉
+
