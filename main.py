@@ -14,7 +14,7 @@ def main():
         with open(filename, 'r') as f:
             text = f.read()
     except FileNotFoundError:
-        print(f"Error: File '{filename}' not found")
+        print(f"Erm What The Sigma? File '{filename}' not found")
         sys.exit(1)
     except Exception as e:
         print(f"Error reading file: {e}")
@@ -31,7 +31,7 @@ def main():
         interpreter.interpret(tree)
 
     except Exception as e:
-        print(f"\nError: {str(e)}")
+        print(f"\nErm What The Sigma? {str(e)}")
         sys.exit(1)
 
 if __name__ == '__main__':

@@ -23,8 +23,8 @@ class SkibidiErmWhatTheSigma(Exception):
         if self.token is not None:
             msg.append(f"at token: {self.token}")
         if msg:
-            return f"Error: {self.message} ({', '.join(msg)})"
-        return f"Error: {self.message}"
+            return f"Erm What The Sigma?  {self.message} ({', '.join(msg)})"
+        return f"Erm What The Sigma? {self.message}"
 
 class SkibidiSyntaxErmWhatTheSigma(SkibidiErmWhatTheSigma):
     """Raised when the lexer encounters invalid syntax in the source code."""

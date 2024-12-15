@@ -76,7 +76,7 @@ KEYWORDS = {
 # Error Messages
 #------------------------------------------------------------------------------
 
-ERR_FILE_NOT_FOUND = "Erm what the sigma: File '{}' not found fr fr"
-ERR_DIVISION_BY_ZERO = "Can't ratio by zero fr fr"
-ERR_FUNCTION_NOT_FOUND = "Function '{}' not found fr fr"
-ERR_FUNCTION_ARGS = "Function '{}' expects {} args but got {} fr fr"
+ERR_FILE_NOT_FOUND = "Erm what the sigma? File '{}' not found fr fr"
+ERR_DIVISION_BY_ZERO = "Erm What The Sigma? Can't ratio by zero fr fr"
+ERR_FUNCTION_NOT_FOUND = "Erm What The Sigma? Function '{}' not found fr fr"
+ERR_FUNCTION_ARGS = "Erm What The Sigma? Function '{}' expects {} args but got {} fr fr"

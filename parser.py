@@ -114,7 +114,7 @@ class Parser:
         if self.current_token.type == token_type:
             self.current_token = self.lexer.get_next_token()
         else:
-            self.error(f'Expected {token_type}, got {self.current_token.type}')
+            self.error(f'Erm What The Sigma? Expected {token_type}, got {self.current_token.type}')
 
     def program(self):
         """program : compound_statement"""
@@ -399,7 +399,7 @@ class Parser:
             else:
                 return VarNode(id_token)
         else:
-            self.error(f'Unexpected token {token.type}')
+            self.error(f'Erm What The Sigma? Unexpected token {token.type}')
 
     def variable(self):
         """variable : ID"""

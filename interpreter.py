@@ -130,7 +130,7 @@ class Interpreter(NodeVisitor):
             return "skip"
         val = self.global_scope.get(var_name)
         if val is None:
-            raise NameError(f"Variable '{var_name}' is not defined")
+            raise NameError(f"Erm What The Sigma? Variable '{var_name}' is not defined")
         return val
 
     def visit_PrintNode(self, node):
@@ -174,14 +174,14 @@ class Interpreter(NodeVisitor):
     def visit_FunctionCallNode(self, node):
         func = self.functions.get(node.name)
         if not func:
-            raise NameError(f"Function '{node.name}' is not defined")
+            raise NameError(f"Erm What The Sigma? Function '{node.name}' is not defined")
 
         # Create new scope for function
         old_scope = self.global_scope.copy()
         
         # Bind arguments to parameters
         if len(node.args) != len(func.params):
-            raise ValueError(f"Expected {len(func.params)} arguments, got {len(node.args)}")
+            raise ValueError(f"Erm What The Sigma? Expected {len(func.params)} arguments, got {len(node.args)}")
         
         for param, arg in zip(func.params, node.args):
             self.global_scope[param] = self.visit(arg)
