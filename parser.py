@@ -83,6 +83,19 @@ class DictAccessNode(ASTNode):
         self.dict_node = dict_node
         self.key_node = key_node
 
+class RandomNode(ASTNode):
+    def __init__(self, token):
+        self.token = token
+class RandomIntNode(ASTNode):
+    def __init__(self, token, min_val, max_val):
+        self.token = token
+        self.min_val = min_val
+        self.max_val = max_val
+class RandomChoiceNode(ASTNode):
+    def __init__(self, token, choices):
+        self.token = token
+        self.choices = choices
+
 class Parser:
     def __init__(self, lexer):
         self.lexer = lexer
@@ -317,12 +330,35 @@ class Parser:
         return node
 
     def factor(self):
-        """factor : NUMBER | STRING | LPAREN expr RPAREN | IDENTIFIER | dict | dict_access | function_call | input_statement"""
+        """factor : NUMBER | STRING | LPAREN expr RPAREN | IDENTIFIER | dict | dict_access | function_call | input_statement | RANDOM"""
         token = self.current_token
 
         if token.type == TokenType.NUMBER:
             self.eat(TokenType.NUMBER)
             return NumberNode(token)
+        elif token.type == TokenType.RANDOM:
+            self.eat(TokenType.RANDOM)
+            self.eat(TokenType.LPAREN)
+            self.eat(TokenType.RPAREN)
+            return RandomNode(token)
+        elif token.type == TokenType.RANDOM_INT:
+            self.eat(TokenType.RANDOM_INT)
+            self.eat(TokenType.LPAREN)
+            min_val = self.expr()
+            self.eat(TokenType.COMMA)
+            max_val = self.expr()
+            self.eat(TokenType.RPAREN)
+            return RandomIntNode(token, min_val, max_val)
+        elif token.type == TokenType.RANDOM_CHOICE:
+            self.eat(TokenType.RANDOM_CHOICE)
+            self.eat(TokenType.LPAREN)
+            choices = []
+            choices.append(self.expr())
+            while self.current_token.type == TokenType.COMMA:
+                self.eat(TokenType.COMMA)
+                choices.append(self.expr())
+            self.eat(TokenType.RPAREN)
+            return RandomChoiceNode(token, choices)
         elif token.type == TokenType.STRING:
             self.eat(TokenType.STRING)
             return StringNode(token)

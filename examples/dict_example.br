@@ -1,6 +1,6 @@
-# Dictionary Example in SkibidiLang
+mew Dictionary Example in SkibidiLang
 
-# Create a simple user profile dictionary
+mew Create a simple user profile dictionary
 rizz user = {
     "name": "Chad",
     "age": 21,
@@ -8,46 +8,46 @@ rizz user = {
     "based": 1
 };
 
-# Print user info
+mew Print user info
 skibidi "User Profile:" fanum_tax skip;
 skibidi "Name: " fanum_tax user["name"] fanum_tax skip;
 skibidi "Age: " fanum_tax user["age"] fanum_tax skip;
 skibidi "Skills: " fanum_tax user["skills"] fanum_tax skip;
 skibidi skip;
 
-# Create another dictionary
+mew Create another dictionary
 rizz stats = {
     "wins": 42,
     "losses": 0,
     "rank": "Gigachad"
 };
 
-# Merge user profile with stats
+mew Merge user profile with stats
 rizz full_profile = user fanum_tax stats;
 
-# Print merged profile
+mew Print merged profile
 skibidi "Full Profile:" fanum_tax skip;
 skibidi "Name: " fanum_tax full_profile["name"] fanum_tax skip;
 skibidi "Rank: " fanum_tax full_profile["rank"] fanum_tax skip;
 skibidi "Wins: " fanum_tax full_profile["wins"] fanum_tax skip;
 skibidi skip;
 
-# Remove some info for privacy
+mew Remove some info for privacy
 rizz private_profile = full_profile ohio "age";
 
-# Add new information
+mew Add new information
 rizz updated_profile = private_profile fanum_tax {
     "status": "Grinding",
     "mood": "Based"
 };
 
-# Print final profile
+mew Print final profile
 skibidi "Updated Profile:" fanum_tax skip;
 skibidi "Name: " fanum_tax updated_profile["name"] fanum_tax skip;
 skibidi "Status: " fanum_tax updated_profile["status"] fanum_tax skip;
 skibidi "Mood: " fanum_tax updated_profile["mood"] fanum_tax skip;
 
-# Function to check if user is based
+mew Function to check if user is based
 bussin is_based(profile) {
     no_cap profile["based"] sigma 1 {
         yeet "Ultra Based";
@@ -55,6 +55,6 @@ bussin is_based(profile) {
     yeet "Not Based";
 };
 
-# Check based status
+mew Check based status
 skibidi skip;
 skibidi "Based Status: " fanum_tax is_based(updated_profile) fanum_tax skip;

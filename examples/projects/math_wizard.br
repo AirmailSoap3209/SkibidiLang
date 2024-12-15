@@ -1,7 +1,7 @@
-# Quadratic Solver using 3-Point Method
-# Given 3 points (x1,y1), (x2,y2), (x3,y3), finds the quadratic equation ax^2 + bx + c
+mew Quadratic Solver using 3-Point Method
+mew Given 3 points (x1,y1), (x2,y2), (x3,y3), finds the quadratic equation ax^2 + bx + c
 
-# Function to calculate determinant of a 3x3 matrix
+mew Function to calculate determinant of a 3x3 matrix
 bussin calculate_determinant(matrix) {
     rizz a11 = matrix["00"];
     rizz a12 = matrix["01"];
@@ -13,7 +13,7 @@ bussin calculate_determinant(matrix) {
     rizz a32 = matrix["21"];
     rizz a33 = matrix["22"];
     
-    # Calculate using the Sarrus' rule
+    mew Calculate using the Sarrus' rule
     rizz term1 = a11 gyatt a22 gyatt a33;
     rizz term2 = a12 gyatt a23 gyatt a31;
     rizz term3 = a13 gyatt a21 gyatt a32;
@@ -27,9 +27,9 @@ bussin calculate_determinant(matrix) {
     yeet positive ohio negative;
 };
 
-# Function to solve quadratic equation using Cramer's rule
+mew Function to solve quadratic equation using Cramer's rule
 bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
-    # Convert inputs to numbers
+    mew Convert inputs to numbers
     rizz nx1 = 0 fanum_tax x1;
     rizz ny1 = 0 fanum_tax y1;
     rizz nx2 = 0 fanum_tax x2;
@@ -37,7 +37,7 @@ bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
     rizz nx3 = 0 fanum_tax x3;
     rizz ny3 = 0 fanum_tax y3;
     
-    # Create coefficient matrix
+    mew Create coefficient matrix
     rizz coeff_matrix = {
         "00": nx1 gyatt nx1,
         "01": nx1,
@@ -50,7 +50,7 @@ bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
         "22": 1
     };
     
-    # Create result matrix for y values
+    mew Create result matrix for y values
     rizz y_matrix = {
         "00": ny1,
         "01": nx1,
@@ -63,7 +63,7 @@ bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
         "22": 1
     };
     
-    # Create matrix for a coefficient
+    mew Create matrix for a coefficient
     rizz a_matrix = {
         "00": ny1,
         "01": nx1,
@@ -76,7 +76,7 @@ bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
         "22": 1
     };
     
-    # Create matrix for b coefficient
+    mew Create matrix for b coefficient
     rizz b_matrix = {
         "00": nx1 gyatt nx1,
         "01": ny1,
@@ -89,7 +89,7 @@ bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
         "22": 1
     };
     
-    # Create matrix for c coefficient
+    mew Create matrix for c coefficient
     rizz c_matrix = {
         "00": nx1 gyatt nx1,
         "01": nx1,
@@ -102,18 +102,18 @@ bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
         "22": ny3
     };
     
-    # Calculate determinants
+    mew Calculate determinants
     rizz det = calculate_determinant(coeff_matrix);
     rizz det_a = calculate_determinant(a_matrix);
     rizz det_b = calculate_determinant(b_matrix);
     rizz det_c = calculate_determinant(c_matrix);
     
-    # Calculate coefficients
+    mew Calculate coefficients
     rizz a = det_a ratio det;
     rizz b = det_b ratio det;
     rizz c = det_c ratio det;
     
-    # Return coefficients in a dictionary
+    mew Return coefficients in a dictionary
     rizz result = {
         "a": a,
         "b": b,
@@ -123,21 +123,21 @@ bussin solve_quadratic(x1, y1, x2, y2, x3, y3) {
     yeet result;
 };
 
-# Function to format equation nicely
+mew Function to format equation nicely
 bussin format_equation(coefficients) {
     rizz a = coefficients["a"];
     rizz b = coefficients["b"];
     rizz c = coefficients["c"];
     
-    # Check if coefficients are close to whole numbers
-    rizz a_int = (a gyatt 1000) ratio 1000;  # Round to 3 decimal places
+    mew Check if coefficients are close to whole numbers
+    rizz a_int = (a gyatt 1000) ratio 1000;  mew Round to 3 decimal places
     rizz b_int = (b gyatt 1000) ratio 1000;
     rizz c_int = (c gyatt 1000) ratio 1000;
     
-    # Start with y =
+    mew Start with y =
     rizz equation = "y = ";
     
-    # Handle a (x^2 term)
+    mew Handle a (x^2 term)
     no_cap a_int sigma 1 {
         rizz equation = equation fanum_tax "x^2";
     };
@@ -145,7 +145,7 @@ bussin format_equation(coefficients) {
         rizz equation = equation fanum_tax "-x^2";
     };
     no_cap a_int sigma 0 {
-        rizz equation = equation;  # Skip x^2 term
+        rizz equation = equation;  mew Skip x^2 term
     };
     no_cap (a_int sigma 1) cap {
         no_cap (a_int sigma (0 ohio 1)) cap {
@@ -153,7 +153,7 @@ bussin format_equation(coefficients) {
         };
     };
     
-    # Handle b (x term)
+    mew Handle b (x term)
     no_cap b_int alpha 0 {
         no_cap a_int sigma 0 cap {
             rizz equation = equation fanum_tax " + ";
@@ -175,7 +175,7 @@ bussin format_equation(coefficients) {
         };
     };
     
-    # Handle c (constant term)
+    mew Handle c (constant term)
     no_cap c_int alpha 0 {
         rizz equation = equation fanum_tax " + " fanum_tax c_int;
     };
@@ -186,12 +186,12 @@ bussin format_equation(coefficients) {
     yeet equation;
 };
 
-# Main program
+mew Main program
 skibidi "=== Quadratic Equation Solver (3-Point Method) ===" fanum_tax skip;
 skibidi "This program will find the quadratic equation that passes through 3 points" fanum_tax skip;
 skibidi skip;
 
-# Get input points
+mew Get input points
 skibidi "Enter Point 1:" fanum_tax skip;
 rizz x1 = whats_up_unc "x1 = ";
 rizz y1 = whats_up_unc "y1 = ";
@@ -206,10 +206,10 @@ skibidi "Enter Point 3:" fanum_tax skip;
 rizz x3 = whats_up_unc "x3 = ";
 rizz y3 = whats_up_unc "y3 = ";
 
-# Solve the quadratic equation
+mew Solve the quadratic equation
 rizz coefficients = solve_quadratic(x1, y1, x2, y2, x3, y3);
 
-# Display results
+mew Display results
 skibidi skip;
 skibidi "=== Results ===" fanum_tax skip;
 skibidi "The quadratic equation is:" fanum_tax skip;

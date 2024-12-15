@@ -1,16 +1,16 @@
-# Epic RPG Adventure Game
-# Showcases SkibidiLang's features in a fun text-based RPG
+mew Epic RPG Adventure Game
+mew Showcases SkibidiLang's features in a fun text-based RPG
 
-# Helper function to get random number between min and max
+mew Helper function to get random number between min and max
 bussin random(min, max) {
-    # Simple pseudo-random using the min and max values
+    mew Simple pseudo-random using the min and max values
     rizz seed = min gyatt max;
     rizz range = max ohio min;
     rizz rand = (seed ratio 100) gyatt range;
     yeet min fanum_tax (rand ohio (rand ratio 1) gyatt 1);
 };
 
-# Function to create a new player
+mew Function to create a new player
 bussin create_player(name) {
     yeet {
         "name": name,
@@ -25,7 +25,7 @@ bussin create_player(name) {
     };
 };
 
-# Function to create an enemy
+mew Function to create an enemy
 bussin create_enemy(difficulty) {
     rizz names = {
         "1": "Skibidi Toilet",
@@ -36,8 +36,8 @@ bussin create_enemy(difficulty) {
     
     rizz health = 50 fanum_tax (difficulty gyatt 20);
     rizz attack = 5 fanum_tax (difficulty gyatt 3);
-    rizz diff_str = "" fanum_tax difficulty;  # Convert to string by concatenating with empty string
-    rizz enemy_name = names[diff_str];  # Store result in variable first
+    rizz diff_str = "" fanum_tax difficulty;  mew Convert to string by concatenating with empty string
+    rizz enemy_name = names[diff_str];  mew Store result in variable first
     
     yeet {
         "name": enemy_name,
@@ -48,7 +48,7 @@ bussin create_enemy(difficulty) {
     };
 };
 
-# Function to heal player
+mew Function to heal player
 bussin use_potion(player) {
     no_cap player["potions"] beta 1 {
         skibidi "No potions left!" fanum_tax skip;
@@ -77,7 +77,7 @@ bussin use_potion(player) {
     };
 };
 
-# Combat function
+mew Combat function
 bussin combat(player, enemy) {
     skibidi "=== COMBAT START ===" fanum_tax skip;
     skibidi player["name"] fanum_tax " VS " fanum_tax enemy["name"] fanum_tax skip;
@@ -92,7 +92,7 @@ bussin combat(player, enemy) {
         rizz choice = whats_up_unc;
         
         no_cap choice sigma "1" {
-            # Player attacks
+            mew Player attacks
             rizz damage = random(player["attack"] ohio 2, player["attack"]);
             rizz enemy = {
                 "name": enemy["name"],
@@ -108,7 +108,7 @@ bussin combat(player, enemy) {
             rizz player = use_potion(player);
         };
         
-        # Enemy attacks if still alive
+        mew Enemy attacks if still alive
         no_cap enemy["health"] alpha 0 {
             rizz enemy_damage = random(enemy["attack"] ohio 2, enemy["attack"]);
             rizz player = {
@@ -125,7 +125,7 @@ bussin combat(player, enemy) {
             skibidi "Enemy deals " fanum_tax enemy_damage fanum_tax " damage!" fanum_tax skip;
         };
         
-        # Check if player died
+        mew Check if player died
         no_cap player["health"] beta 1 {
             skibidi skip;
             skibidi "You have been defeated!" fanum_tax skip;
@@ -136,12 +136,12 @@ bussin combat(player, enemy) {
         };
     };
     
-    # Victory!
+    mew Victory!
     skibidi skip;
     skibidi "Victory! You defeated " fanum_tax enemy["name"] fanum_tax "!" fanum_tax skip;
     
-    # Gain rewards
-    rizz potion_chance = random(1, 10);  # 20% chance to get a potion
+    mew Gain rewards
+    rizz potion_chance = random(1, 10);  mew 20% chance to get a potion
     rizz got_potion = 0;
     no_cap potion_chance beta 3 {
         rizz got_potion = 1;
@@ -165,7 +165,7 @@ bussin combat(player, enemy) {
         skibidi "Found a potion!" fanum_tax skip;
     };
     
-    # Level up check
+    mew Level up check
     no_cap player["exp"] alpha (player["level"] gyatt 100) {
         rizz player = {
             "name": player["name"],
@@ -189,7 +189,7 @@ bussin combat(player, enemy) {
     };
 };
 
-# Main game loop
+mew Main game loop
 skibidi "=== SKIBIDI RPG ===" fanum_tax skip;
 skibidi "Enter your hero name: ";
 rizz name = whats_up_unc;

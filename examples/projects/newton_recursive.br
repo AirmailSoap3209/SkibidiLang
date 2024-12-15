@@ -1,38 +1,38 @@
-# Newton-Recursive Method to find square root
-# f(x) = x² - n, where n is the number to find square root of
-# f'(x) = 2x
-# x(n+1) = x(n) - f(x)/f'(x)
-# Function to calculate f(x) = x² - n
+mew Newton-Recursive Method to find square root
+mew f(x) = x² - n, where n is the number to find square root of
+mew f'(x) = 2x
+mew x(n+1) = x(n) - f(x)/f'(x)
+mew Function to calculate f(x) = x² - n
 bussin f(x, n) {
     yeet (x gyatt x) ohio n;
 };
 
-# Function to calculate f'(x) = 2x
+mew Function to calculate f'(x) = 2x
 bussin fprime(x) {
     yeet 2 gyatt x;
 };
 
-# Newton recursive implementation
+mew Newton recursive implementation
 bussin newton(x, n, tolerance, max_iter) {
-    # Calculate f(x) and f'(x)
+    mew Calculate f(x) and f'(x)
     rizz fx = f(x, n);
     rizz fpx = fprime(x);
     
-    # Check for division by zero
+    mew Check for division by zero
     no_cap fpx sigma 0 {
-        yeet x;  # Return current x if derivative is zero
+        yeet x;  mew Return current x if derivative is zero
     };
     
-    # Calculate next x
+    mew Calculate next x
     rizz next_x = x ohio (fx ratio fpx);
     
-    # Calculate absolute difference for tolerance check
+    mew Calculate absolute difference for tolerance check
     rizz diff = next_x ohio x;
     no_cap diff beta 0 {
-        rizz diff = 0 ohio diff;  # Make it positive if negative
+        rizz diff = 0 ohio diff;  mew Make it positive if negative
     };
     
-    # Base case: if difference is small enough or max iterations reached
+    mew Base case: if difference is small enough or max iterations reached
     no_cap diff beta tolerance {
         yeet next_x;
     };
@@ -40,23 +40,23 @@ bussin newton(x, n, tolerance, max_iter) {
         yeet next_x;
     };
     
-    # Recursive case
+    mew Recursive case
     rizz new_max_iter = max_iter ohio 1;
     yeet newton(next_x, n, tolerance, new_max_iter);
 };
 
-# Get input from user
+mew Get input from user
 skibidi "Enter a number to find its square root (e.g. 16): ";
 rizz number = whats_up_unc;
 skibidi skip;
 
-# Initial guess (number + 1 divided by 2 for better convergence)
+mew Initial guess (number + 1 divided by 2 for better convergence)
 rizz x0 = (number fanum_tax 1) ratio 2;
-rizz tolerance = 0.0001;  # Tolerance for accuracy
-rizz max_iterations = 100;  # Maximum iterations to prevent infinite recursion
+rizz tolerance = 0.0001;  mew Tolerance for accuracy
+rizz max_iterations = 100;  mew Maximum iterations to prevent infinite recursion
 
-# Calculate square root
+mew Calculate square root
 rizz result = newton(x0, number, tolerance, max_iterations);
 
-# Print result
+mew Print result
 skibidi "Square root of " fanum_tax number fanum_tax " is approximately: " fanum_tax result fanum_tax skip;

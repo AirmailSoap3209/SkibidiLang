@@ -1,37 +1,37 @@
-# This is a complete example of SkibidiLang features
+mew This is a complete example of SkibidiLang features
 
-# Variable declarations
+mew Variable declarations
 rizz x = 10;
 rizz y = 5;
 rizz message = "Hello Skibidi World!";
 
-# Basic output
+mew Basic output
 skibidi message fanum_tax skip;
 
-# Basic input
+mew Basic input
 skibidi "Enter a number for factorial: ";
 rizz user_input = whats_up_unc;
 skibidi skip;
 
-# Basic arithmetic
-rizz sum = x fanum_tax y;      # Addition
-rizz diff = x ohio y;          # Subtraction
-rizz prod = x gyatt y;         # Multiplication
-rizz quot = x ratio y;         # Division
+mew Basic arithmetic
+rizz sum = x fanum_tax y;      mew Addition
+rizz diff = x ohio y;          mew Subtraction
+rizz prod = x gyatt y;         mew Multiplication
+rizz quot = x ratio y;         mew Division
 
-# Comparison and conditionals
+mew Comparison and conditionals
 no_cap x beta y {
     skibidi "x is greater than y" fanum_tax skip;
 };
 
-# While loop with counter
+mew While loop with counter
 rizz counter = 0;
 ong counter beta 3 {
     skibidi "Counter is: " fanum_tax counter fanum_tax skip;
     rizz counter = counter fanum_tax 1;
 };
 
-# Function definition and recursion
+mew Function definition and recursion
 bussin factorial(n) {
     no_cap n sigma 0 {
         yeet 1;
@@ -39,12 +39,12 @@ bussin factorial(n) {
     yeet n gyatt factorial(n ohio 1);
 };
 
-# Function calls and nested expressions
+mew Function calls and nested expressions
 skibidi "Calculating factorial:" fanum_tax skip;
 rizz result = factorial(user_input);
 skibidi result fanum_tax skip;
 
-# String manipulation with separate conditionals
+mew String manipulation with separate conditionals
 skibidi skip;
 rizz name = whats_up_unc "What's your name? ";
 no_cap name sigma "Chad" {
@@ -57,7 +57,7 @@ no_cap name sigma "" {
     skibidi "Why so quiet?" fanum_tax skip;
 };
 
-# Pattern printing with nested loops
+mew Pattern printing with nested loops
 skibidi skip;
 rizz i = 1;
 ong i beta 5 {
@@ -70,7 +70,7 @@ ong i beta 5 {
     rizz i = i fanum_tax 1;
 };
 
-# Simple calculator
+mew Simple calculator
 skibidi skip;
 skibidi "Calculator time!" fanum_tax skip;
 rizz num1 = whats_up_unc "Enter first number: ";

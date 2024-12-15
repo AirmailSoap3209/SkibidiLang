@@ -1,5 +1,7 @@
 from tokens import TokenType
 
+import random
+
 class NodeVisitor:
     def visit(self, node):
         method_name = 'visit_' + type(node).__name__
@@ -195,6 +197,18 @@ class Interpreter(NodeVisitor):
 
     def visit_ReturnNode(self, node):
         raise ReturnValue(self.visit(node.expr))
+    
+    def visit_RandomNode(self, node):
+        return random.random()
+    
+    def visit_RandomIntNode(self, node):
+        min_val = int(self.visit(node.min_val))
+        max_val = int(self.visit(node.max_val))
+        return random.randint(min_val, max_val)
+    
+    def visit_RandomChoiceNode(self, node):
+        choices = [self.visit(choice) for choice in node.choices]
+        return random.choice(choices)
 
     def interpret(self, tree):
         return self.visit(tree)

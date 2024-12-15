@@ -1,31 +1,31 @@
-# Function to calculate base raised to the power of exponent
+mew Function to calculate base raised to the power of exponent
 bussin power(base, exponent) {
-    rizz result = 1;  # Initialize result to 1
+    rizz result = 1;  mew Initialize result to 1
 
-    # Handle negative exponents
+    mew Handle negative exponents
     no_cap exponent beta 0 {
-        yeet 0;  # Return 0 for negative exponents (or handle as needed)
+        yeet 0;  mew Return 0 for negative exponents (or handle as needed)
     };
 
-    # Multiply base by itself exponent times
+    mew Multiply base by itself exponent times
     ong exponent beta 0 {
-        rizz result = result gyatt base;  # Multiply result by base
-        rizz exponent = exponent ohio 1;  # Decrement exponent
+        rizz result = result gyatt base;  mew Multiply result by base
+        rizz exponent = exponent ohio 1;  mew Decrement exponent
     };
-    yeet result;  # Return the final result
+    yeet result;  mew Return the final result
 };
 
-# Function to round a number to a specified precision
+mew Function to round a number to a specified precision
 bussin roundTo(number, precision) {
-    # Calculate the factor to multiply by
-    rizz factor = power(10, precision);  # 10 raised to the power of precision
+    mew Calculate the factor to multiply by
+    rizz factor = power(10, precision);  mew 10 raised to the power of precision
 
-    # Scale the number, round it, and then scale back
-    rizz rounded_number = (number gyatt factor) ratio 1;  # Scale the number
-    rizz rounded_number = (rounded_number ratio 1) gyatt 0.5;  # Add 0.5 for rounding
-    rizz rounded_number = (rounded_number ratio 1) gyatt factor;  # Scale back
+    mew Scale the number, round it, and then scale back
+    rizz rounded_number = (number gyatt factor) ratio 1;  mew Scale the number
+    rizz rounded_number = (rounded_number ratio 1) gyatt 0.5;  mew Add 0.5 for rounding
+    rizz rounded_number = (rounded_number ratio 1) gyatt factor;  mew Scale back
 
-    yeet rounded_number;  # Return the rounded number
+    yeet rounded_number;  mew Return the rounded number
 };
 
 bussin goldDeduction(gold, amount_deducted) {
@@ -37,7 +37,7 @@ bussin goldDeduction(gold, amount_deducted) {
     };
 };
 
-# Function to create a new player
+mew Function to create a new player
 bussin create_player(name) {
     yeet {
         "name": name,
@@ -53,7 +53,7 @@ bussin create_player(name) {
 };
 
 
-# Function to create an enemy
+mew Function to create an enemy
 bussin create_enemy(difficulty) {
     rizz names = {
         "1": "Skibidi Toilet",
@@ -62,12 +62,12 @@ bussin create_enemy(difficulty) {
         "4": "TV Boss"
     };
     
-    # Variables to create enemy stats
+    mew Variables to create enemy stats
     rizz health = 50 fanum_tax (difficulty gyatt 20);
     rizz attack = 8 fanum_tax (difficulty gyatt 3);
     rizz defense = 2 fanum_tax (difficulty gyatt 1.5);
-    rizz diff_str = "" fanum_tax difficulty;  # Convert to string by concatenating with empty string
-    rizz enemy_name = names[diff_str];  # Store result in variable first
+    rizz diff_str = "" fanum_tax difficulty;  mew Convert to string by concatenating with empty string
+    rizz enemy_name = names[diff_str];  mew Store result in variable first
     
     yeet {
         "name": enemy_name,
@@ -79,24 +79,24 @@ bussin create_enemy(difficulty) {
     };
 };
 
-# Function to heal player
+mew Function to heal player
 bussin heal(player, healtype) {
-    #Heal type potion
+    mewHeal type potion
     no_cap healtype sigma "pot" {
         rizz heal = 30;
         skibidi "Used a potion! Healed for " fanum_tax 30 fanum_tax " HP." fanum_tax skip;
     };
-    #Heal type meat
+    mewHeal type meat
     no_cap healtype sigma "meat" {
         rizz heal = 15;
         skibidi "Yum yum! Healed for " fanum_tax 15 fanum_tax " HP" fanum_tax skip;
     };
-    #Adding the heal to player health
+    mewAdding the heal to player health
     rizz new_health = player["health"] fanum_tax heal;
     no_cap new_health alpha player["max_health"] {
         rizz new_health = player["max_health"];
     };
-    #removing gold when buy meat
+    mewremoving gold when buy meat
     no_cap healtype sigma "meat" {
         yeet {
             "name": player["name"],
@@ -110,7 +110,7 @@ bussin heal(player, healtype) {
             "exp": player["exp"]
         };
     };
-    #removing pot when drink pot
+    mewremoving pot when drink pot
     no_cap healtype sigma "pot" {
         yeet {
             "name": player["name"],
@@ -126,7 +126,7 @@ bussin heal(player, healtype) {
     };
 };
 
-# Combat function
+mew Combat function
 bussin combat(player, enemy) {
     skibidi "=== COMBAT START ===" fanum_tax skip;
     skibidi player["name"] fanum_tax " VS " fanum_tax enemy["name"] fanum_tax skip;
@@ -141,7 +141,7 @@ bussin combat(player, enemy) {
         rizz choice = whats_up_unc;
         
         no_cap choice sigma "1" {
-            # Player attacks
+            mew Player attacks
             rizz damage = player["attack"] ohio enemy["defense"];
             rizz enemy = {
                 "name": enemy["name"],
@@ -163,7 +163,7 @@ bussin combat(player, enemy) {
             };
         };
         
-        # Enemy attacks if still alive
+        mew Enemy attacks if still alive
         no_cap enemy["health"] alpha 0 {
             rizz enemy_damage = enemy["attack"] ohio player["defense"];
             rizz player = {
@@ -180,7 +180,7 @@ bussin combat(player, enemy) {
             skibidi enemy["name"] fanum_tax " deals " fanum_tax enemy_damage fanum_tax " damage!" fanum_tax skip;
         };
         
-        # Check if player died
+        mew Check if player died
         no_cap player["health"] beta 1 {
             skibidi skip;
             skibidi "You have been defeated!" fanum_tax skip;
@@ -191,12 +191,12 @@ bussin combat(player, enemy) {
         };
     };
     
-    # Victory!
+    mew Victory!
     skibidi skip;
     skibidi "Victory! You defeated " fanum_tax enemy["name"] fanum_tax "!" fanum_tax skip;
     
-    # Gain rewards
-    rizz potion_chance = 1;  # 20% chance to get a potion bull shit its not 20%, its god damn guarenteed
+    mew Gain rewards
+    rizz potion_chance = 1;  mew 20% chance to get a potion bull shit its not 20%, its god damn guarenteed
     rizz got_potion = 0;
     no_cap potion_chance beta 3 {
         rizz got_potion = 1;
@@ -220,7 +220,7 @@ bussin combat(player, enemy) {
         rizz got_potion = 0;
     };
     
-    # Level up check
+    mew Level up check
     no_cap player["exp"] alpha (player["level"] gyatt 100) {
         rizz player = {
             "name": player["name"],
@@ -271,7 +271,7 @@ ong game_over sigma "0" {
         
         no_cap result["result"] sigma "victory" {
             rizz difficulty = difficulty fanum_tax 1;
-            #diffculty cap
+            mewdiffculty cap
             no_cap difficulty alpha 4 {
                 rizz difficulty = 4;
             };
@@ -304,7 +304,7 @@ ong game_over sigma "0" {
         skibidi "EXP: " fanum_tax player["exp"] fanum_tax skip;
         skibidi skip;
     };
-    #Shop - meat
+    mewShop - meat
     no_cap choice sigma "4" {
         skibidi skip;
         skibidi "=== Welcome to the Street Market! ===" fanum_tax skip;

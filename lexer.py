@@ -36,8 +36,13 @@ class Lexer:
             self.advance()
 
     def skip_comment(self):
-        while self.current_char and self.current_char != '\n':
-            self.advance()
+        comment_start = 'mew'
+        if self.text[self.pos:self.pos + len(comment_start)] == comment_start:
+            for _ in range(len(comment_start)):
+                self.advance()  # Skip the entire comment start sequence
+            while self.current_char and self.current_char != '\n':  # Consume comment content
+                self.advance()
+
 
     def number(self):
         result = ''
@@ -82,9 +87,10 @@ class Lexer:
                 self.skip_whitespace()
                 continue
 
-            if self.current_char == '#':
+            if self.text[self.pos:self.pos + len('mew')] == 'mew':
                 self.skip_comment()
                 continue
+
 
             if self.current_char.isdigit():
                 return Token(TokenType.NUMBER, self.number(), self.line, self.column)
