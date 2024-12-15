@@ -17,25 +17,30 @@
 
 ### Keywords Overview
 
-| **Category**            | **SkibidiLang Keyword** | **Traditional Equivalent** |
-| ----------------------- | ----------------------- | -------------------------- |
-| **Printing/I/O**        | `skibidi`               | `print`                    |
-|                         | `whats_up_unc`          | `input`                    |
-|                         | `skip`                  | `newline`                  |
-| **Variables/Functions** | `rizz`                  | `variable declaration`     |
-|                         | `bussin`                | `function definition`      |
-|                         | `yeet`                  | `return`                   |
-| **Control Flow**        | `no_cap`                | `if`                       |
-|                         | `ong`                   | `while`                    |
-|                         | `fr_fr`                 | `true`                     |
-|                         | `cap`                   | `false`                    |
-| **Arithmetic**          | `fanum_tax`             | `+`                        |
-|                         | `ohio`                  | `-`                        |
-|                         | `gyatt`                 | `*`                        |
-|                         | `ratio`                 | `/`                        |
-| **Comparisons**         | `alpha`                 | `>`                        |
-|                         | `beta`                  | `<`                        |
-|                         | `sigma`                 | `==`                       |
+
+| **Category**            | **SkibidiLang Keyword** | **Traditional Equivalent** | **Syntax Example**                                                                                                                                                                      |
+| ----------------------- | ----------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Printing/I/O**        | `skibidi`               | `print`                    | `skibidi "Hello, world!" fanum_tax skip;`                                                                                                                                                 |
+|                         | `whats_up_unc`          | `input`                    | `rizz name = whats_up_unc "Enter your name: ";`                                                                                                                                           |
+|                         | `skip`                  | `newline`                  | `skibidi skip;`                                                                                                                                                                          |
+| **Variables/Functions** | `rizz`                  | `variable declaration`     | `rizz x = 5;`                                                                                                                                                                            |
+|                         | `bussin`                | `function definition`      | `bussin add(x, y) { rizz sum = x fanum_tax y; yeet sum; };`                                                                                                                            |
+|                         | `yeet`                  | `return`                   | `yeet result;`                                                                                                                                                                           |
+| **Control Flow**        | `no_cap`                | `if`                       | `no_cap x alpha 0 { skibidi "x is positive"; };`                                                                                                                                         |
+|                         | `ong`                   | `while`                    | `ong x alpha 5 { skibidi x; x = x fanum_tax 1; };`                                                                                                                                      |
+|                         | `fr_fr`                 | `true`                     | `no_cap x fr_fr { skibidi "x is true"; };`                                                                                                                                               |
+|                         | `cap`                   | `false`                    | `no_cap x cap { skibidi "x is false"; };`                                                                                                                                               |
+| **Arithmetic**          | `fanum_tax`             | `+`                        | `rizz result = x fanum_tax y;`                                                                                                                                                           |
+|                         | `ohio`                  | `-`                        | `rizz difference = x ohio y;`                                                                                                                                                           |
+|                         | `gyatt`                 | `*`                        | `rizz product = x gyatt y;`                                                                                                                                                             |
+|                         | `ratio`                 | `/`                        | `rizz quotient = x ratio y;`                                                                                                                                                            |
+| **Comparisons**         | `alpha`                 | `>`                        | `no_cap x alpha y { skibidi "x is greater than y"; };`                                                                                                                                    |
+|                         | `beta`                  | `<`                        | `no_cap x beta y { skibidi "x is less than y"; };`                                                                                                                                       |
+|                         | `sigma`                 | `==`                       | `no_cap x sigma y { skibidi "x is equal to y"; };`                                                                                                                                       |
+| **Random Functions**    | `goofy_ahh`             | `random float`             | `rizz basic_random = goofy_ahh(); skibidi "Random float (0-1): " fanum_tax basic_random fanum_tax skip;`                                                                                   |
+|                         | `goofy_ahh_int`         | `random integer`           | `rizz dice_roll = goofy_ahh_int(1, 6); skibidi "Dice roll (1-6): " fanum_tax dice_roll fanum_tax skip;`                                                                                   |
+|                         | `goofy_ahh_choice`      | `random choice from list`  | `rizz weapon = goofy_ahh_choice("sword", "axe", "bow", "staff"); skibidi "Random weapon: " fanum_tax weapon fanum_tax skip;`                                                              |
+
 
 ---
 
