@@ -1,22 +1,21 @@
 # SkibidiLang (formerly BrainRot)
 
-**SkibidiLang** is a modern, meme-inspired programming language that brings internet slang and humor into coding. It’s designed to make programming enjoyable while retaining the functionality of traditional programming languages. Whether you’re creating fun projects or learning to code, SkibidiLang offers a unique experience.
+**SkibidiLang** is a meme-inspired programming language designed to incorporate internet humor while maintaining the functionality of traditional programming languages. It is intended for creating projects and learning programming.
 
 ---
 
-## Features at a Glance
+## Key Features
 
-- **Robust Programming Constructs**: Includes loops, conditionals, and functions.
-- **Powerful Data Management**: Work with immutable dictionaries and type-safe structures.
-- **Console I/O**: Easily handle input and output with keywords like `whats_up_unc`.
-- **Project-Ready**: Build modular, scalable applications with `.br` files.
+- **Programming Constructs**: Supports loops, conditionals, and functions.
+- **Data Management**: Provides immutable dictionaries and type-safe structures.
+- **Console I/O**: Simplified input and output handling using keywords like `whats_up_unc`.
+- **Modular Design**: Allows building scalable applications with `.br` files.
 
 ---
 
-## SkibidiLang Syntax
+## Syntax Overview
 
-### Keywords Overview
-
+### Keywords
 
 | **Category**            | **SkibidiLang Keyword** | **Traditional Equivalent** | **Syntax Example**                                                                                                                                                                      |
 | ----------------------- | ----------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -30,40 +29,57 @@
 |                         | `ong`                   | `while`                    | `ong x alpha 5 {`<br>` skibidi x; x = x fanum_tax 1; `<br>`};`                                                                                                                                      |
 |                         | `fr_fr`                 | `true`                     | `no_cap x fr_fr {`<br>` skibidi "x is true"; `<br>`};`                                                                                                                                               |
 |                         | `cap`                   | `false`                    | `no_cap x cap {`<br>` skibidi "x is false"; `<br>`};`                                                                                                                                               |
+|                         | `sigma`                 | `==`                       | `no_cap x sigma y {`<br>` skibidi "x is equal to y"; `<br>`};`                                                                                                                                       |
+|                         | `ohio`                  | `not` (unary negation)     | `rizz negated_x = ohio x;`                                                                                                                                                               |
 | **Arithmetic**          | `fanum_tax`             | `+`                        | `rizz result = x fanum_tax y;`                                                                                                                                                           |
 |                         | `ohio`                  | `-`                        | `rizz difference = x ohio y;`                                                                                                                                                           |
 |                         | `gyatt`                 | `*`                        | `rizz product = x gyatt y;`                                                                                                                                                             |
 |                         | `ratio`                 | `/`                        | `rizz quotient = x ratio y;`                                                                                                                                                            |
-| **Comparisons**         | `alpha`                 | `>`                        | `no_cap x alpha y {`<br>` skibidi "x is greater than y"; `<br>`};`                                                                                                                                    |
+| **Logical Operators**   | `ohio`                  | `not`                      | `no_cap ohio x fr_fr {`<br>` skibidi "x is false"; `<br>`};`                                                                                                                                        |
+|                         | `alpha`                 | `>`                        | `no_cap x alpha y {`<br>` skibidi "x is greater than y"; `<br>`};`                                                                                                                                    |
 |                         | `beta`                  | `<`                        | `no_cap x beta y {`<br>` skibidi "x is less than y"; `<br>`};`                                                                                                                                       |
-|                         | `sigma`                 | `==`                       | `no_cap x sigma y {`<br>` skibidi "x is equal to y"; `<br>`};`                                                                                                                                       |
 | **Random Functions**    | `goofy_ahh`             | `random float`             | `rizz basic_random = goofy_ahh();`<br>` skibidi "Random float (0-1): " fanum_tax basic_random fanum_tax skip;`                                                                                   |
 |                         | `goofy_ahh_int`         | `random integer`           | `rizz dice_roll = goofy_ahh_int(1, 6);`<br>` skibidi "Dice roll (1-6): " fanum_tax dice_roll fanum_tax skip;`                                                                                   |
 |                         | `goofy_ahh_choice`      | `random choice from list`  | `rizz weapon = goofy_ahh_choice("sword", "axe", "bow", "staff");`<br>` skibidi "Random weapon: " fanum_tax weapon fanum_tax skip;`                                                              |
+| **Others**              | `mew`                  | `#` (single-line comment)  | `mew This is a comment`                                                                                                                                                                |
 
+### Key Concepts
+
+- **Compound Conditions**: Combine conditions using logical operators.
+  ```
+  no_cap (x alpha 0) cap (x sigma 10) {
+      skibidi "x is between 1 and 10";
+  };
+  ```
+
+- **Unary Negation**: Negate values using `ohio`.
+  ```
+  rizz negated_x = ohio x;
+  ```
+
+- **Random Functions**: `goofy_ahh_int` takes min and max values, `goofy_ahh_choice` selects a random value from a list.
+  ```
+  rizz random_value = goofy_ahh_choice("apple", "banana", "cherry");
+  ```
 
 ---
 
 ## Data Structures
 
-### Dictionaries
+### Immutable Dictionaries
 
-SkibidiLang supports immutable dictionaries, encouraging clean data flow and functional programming principles. This approach reduces the risk of unintended side effects and promotes safer, more predictable code behavior.
+SkibidiLang uses immutable dictionaries, which promote functional programming principles. To update data, a new dictionary must be created to avoid side effects.
 
-#### Example: Dictionary Usage
-
+Example:
 ```
-# Creating a dictionary
 rizz stats = {
     "health": 100,
     "attack": 10,
     "defense": 5
 };
 
-# Accessing values
 rizz health = stats["health"];
 
-# Updating values (create a new dictionary)
 rizz new_stats = {
     "health": stats["health"] ohio 10,
     "attack": stats["attack"],
@@ -76,33 +92,29 @@ rizz new_stats = {
 ## Example Programs
 
 ### Hello, World
-
 ```
 skibidi "Hello, World!" fanum_tax skip;
 ```
 
-### Arithmetic and Variables
-
+### Arithmetic & Variables
 ```
 rizz x = 10;
 rizz y = 20;
-rizz z = x fanum_tax y;  # z = 30
+rizz z = x fanum_tax y;
 skibidi z fanum_tax skip;
 ```
 
-### Functions and Return Values
-
+### Functions & Return Values
 ```
 bussin add(x, y) {
     yeet x fanum_tax y;
 }
 
 rizz result = add(5, 3);
-skibidi result;  # Prints 8
+skibidi result;
 ```
 
 ### Control Flow with Boolean Logic
-
 ```
 rizz game_over = 0;  # cap (false)
 
@@ -118,34 +130,19 @@ ong game_over sigma 0 {
 
 ---
 
-## SkibidiLang Language Features
+## SkibidiLang Features
 
-### Core Features
-
-- **Arithmetic & Comparisons**: Handle math and logic with keywords like `fanum_tax` for addition or `alpha` for greater-than comparisons.
-- **Immutability**: Encourages clean coding practices by restricting in-place updates to dictionaries.
-
-### Programming Constructs
-
-- **Conditional Statements**: Use `no_cap` (if/else) for decision-making.
-- **Loops**: Utilize `ong` (while) for iteration.
-- **Functions**: Define reusable code blocks with `bussin` and return values with `yeet`.
-
-### Data Management
-
-- **Dictionaries**: Work with immutable, string-keyed dictionaries for structured data.
-- **Dynamic Variables**: Use `rizz` to declare and manage data.
-
-### Input/Output
-
-- **Console Input**: Capture user input with `whats_up_unc`.
-- **Formatted Output**: Print data using `skibidi` and control newlines with `skip`.
+- **Arithmetic & Comparisons**: Use keywords like `fanum_tax` for addition and `alpha` for comparisons.
+- **Immutability**: Encourages safe, predictable programming with immutable dictionaries.
+- **Control Flow**: Conditional statements (`no_cap`) and loops (`ong`) are available.
+- **Data Structures**: Use immutable dictionaries and dynamic variables (`rizz`).
+- **I/O**: Input with `whats_up_unc` and output with `skibidi`.
 
 ### Syntax Rules
 
 - Statements end with `;`.
 - Code blocks are enclosed in `{}`.
-- Strings use double quotes (").
+- Strings use double quotes.
 - Comments start with `#`.
 
 ---
@@ -170,20 +167,13 @@ ong game_over sigma 0 {
 
 ### File Extension
 
-SkibidiLang programs use the `.br` file extension.
+- SkibidiLang programs use the `.br` extension.
 
 ---
 
 ## Best Practices
 
-- **Use Descriptive Names**: Make variables and functions meaningful.
-- **Comment Complex Logic**: Ensure readability for future users.
-- **Maintain Consistent Formatting**: Indentation and spacing improve clarity.
-- **Break Down Functions**: Keep them small and focused.
-
----
-
-## Let’s Get Skibidi!
-
-SkibidiLang is the perfect blend of fun and functionality. Share your creations, explore exciting projects, and contribute to the SkibidiLang community—let’s make programming skibidi and bussin together! 
-
+- **Descriptive Naming**: Use meaningful variable and function names.
+- **Commenting**: Ensure readability for future developers.
+- **Consistent Formatting**: Proper indentation improves code clarity.
+- **Function Breakdown**: Keep functions small and focused.
