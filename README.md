@@ -1,4 +1,4 @@
-# SkibidiLang (formerly BrainRot)
+# SkibidiLang
 
 **SkibidiLang** is a meme-inspired programming language designed to incorporate internet humor while maintaining the functionality of traditional programming languages. It is intended for creating projects and learning programming.
 
