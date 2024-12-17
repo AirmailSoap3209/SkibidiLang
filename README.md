@@ -96,7 +96,7 @@ ong game_over sigma 0 {
 ```
 
 ## Featured Project: RPG Game
-Check out `examples/projects/rpg_game.br` for a complete text-based RPG game showcasing:
+Check out `examples/projects/betterrpg_game.br` for a complete text-based RPG game showcasing:
 - Dictionary-based character stats
 - Turn-based combat system
 - Inventory management
@@ -132,31 +132,31 @@ Check out `examples/projects/rpg_game.br` for a complete text-based RPG game sho
 ### Project Support
 - Modular code organization
 - Clear file extension (.br) for easy recognition
-- Support for large projects (see RPG game and math-wizard example)
+- Support for large projects (see betterrpg_game and math_wizard example)
 - Comprehensive error messages
 
-## Important Notes
-### Syntax Requirements
+## Important Notes ***
+### Syntax Requirements **
 - All statements must end with semicolon (;)
 - Code blocks require curly braces { }
 - Strings must use double quotes "text"
 - Comments begin with # symbol
 - Proper spacing around operators is required
 
-### Dictionary Rules
+### Dictionary Rules *
 - All dictionary keys must be strings
 - Dictionaries are immutable by design
 - Create new dictionaries to update values
 - Access values using square bracket notation ["key"]
 
-### Best Practices
+### Best Practices *
 - Use descriptive variable names
 - Maintain consistent indentation
 - Comment complex logic
 - Break down complex operations into smaller functions
 - Handle errors appropriately
 
-### Common Pitfalls
+### Common Pitfalls ***
 - Remember to use semicolons at end of statements
 - Don't try to modify dictionaries directly
 - Ensure proper string formatting in dictionary keys
@@ -165,7 +165,7 @@ Check out `examples/projects/rpg_game.br` for a complete text-based RPG game sho
 ## Requirements
 - Python 3.6+
 
-## Installation
+## Installation **
 1. Clone this repository
 2. Run your SkibidiLang programs using the Python interpreter:
 ```bash
